@@ -135,7 +135,7 @@ function resolveAsset(pathname) {
   return null;
 }
 
-function enhanceHtml(html, asset) {
+function enhanceHtml(html, asset, requestUrl) {
   const isReseller = asset === "revendedor.html";
   const canonical = isReseller
     ? "https://wrbtv.com.br/revendedor.html"
@@ -147,6 +147,8 @@ function enhanceHtml(html, asset) {
     ? "Conheça o programa de revendedores WRB-TV e saiba como fazer parte."
     : "Canais ao vivo, filmes, séries, esportes e entretenimento em vários dispositivos. Acesse a WRB-TV e solicite seu teste gratuito.";
   const shareImage = "https://wrbtv.com.br/assets/wrbtv-social-preview.jpg?rev=20261019e";
+  const requestHost = requestUrl && new URL(requestUrl).hostname === "www.wrbtv.com.br" ? "www.wrbtv.com.br" : "wrbtv.com.br";
+  const shareUrl = "https://" + requestHost + (isReseller ? "/revendedor.html" : "/");
 
   // Remove stale Open Graph/Twitter tags from bundled HTML so the intended image is authoritative.
   html = html.replace(/<meta\b[^>]*>/gi, function (tag) {
@@ -162,7 +164,7 @@ function enhanceHtml(html, asset) {
     '<link rel="apple-touch-icon" href="https://wrbtv.com.br/assets/wrbtv-logo.png">',
     '<meta property="og:type" content="website">',
     '<meta property="og:site_name" content="WRB-TV">',
-    '<meta property="og:url" content="' + canonical + '">',
+    '<meta property="og:url" content="' + shareUrl + '">',
     '<meta property="og:title" content="' + title + '">',
     '<meta property="og:description" content="' + description + '">',
     '<meta property="og:image" content="' + shareImage + '">',
@@ -263,7 +265,7 @@ export default {
 
       let responseBody = request.method === "HEAD" ? null : upstream.body;
       if (request.method === "GET" && asset.endsWith(".html")) {
-        responseBody = enhanceHtml(await upstream.text(), asset);
+        responseBody = enhanceHtml(await upstream.text(), asset, url.toString());
       }
 
       const headers = new Headers({
