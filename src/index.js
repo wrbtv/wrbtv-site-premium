@@ -108,7 +108,59 @@ const MOBILE_PREMIUM_CSS = `.mobile-menu-toggle { display:none !important; }\n@m
   .mobile-catalog { letter-spacing:-.01em; }
   .mobile-hero-actions { grid-template-columns:1fr !important; }
   .mobile-hero-actions .btn { min-height:48px; }
-}`;
+
+/* Premium fumê: texto sobre imagens continua legível sem cobrir a arte. */
+@media (max-width:1020px) {
+  .mobile-brand .eyebrow {
+    padding:7px 13px !important;
+    border:1px solid rgba(78,188,255,.20);
+    border-radius:999px;
+    background:rgba(3,12,27,.34) !important;
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+  }
+  .mobile-home-hero h1 {
+    padding:14px 16px !important;
+    border:1px solid rgba(91,165,229,.20) !important;
+    border-radius:18px !important;
+    background:linear-gradient(135deg,rgba(3,12,27,.43),rgba(4,16,33,.29)) !important;
+    box-shadow:0 10px 26px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.045) !important;
+    backdrop-filter:blur(5px) !important;
+    -webkit-backdrop-filter:blur(5px) !important;
+  }
+  .mobile-home-copy {
+    padding:12px 15px !important;
+    border:1px solid rgba(91,165,229,.17) !important;
+    border-radius:15px !important;
+    background:linear-gradient(135deg,rgba(3,12,27,.38),rgba(4,16,33,.25)) !important;
+    box-shadow:0 8px 22px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.035) !important;
+    backdrop-filter:blur(5px) !important;
+    -webkit-backdrop-filter:blur(5px) !important;
+  }
+  .section-head {
+    padding:13px 15px !important;
+    border:1px solid rgba(91,165,229,.18) !important;
+    border-radius:16px !important;
+    background:linear-gradient(135deg,rgba(3,12,27,.36),rgba(4,16,33,.24)) !important;
+    box-shadow:0 8px 22px rgba(0,0,0,.11),inset 0 1px 0 rgba(255,255,255,.035) !important;
+    backdrop-filter:blur(5px) !important;
+    -webkit-backdrop-filter:blur(5px) !important;
+  }
+  .feature {
+    background:rgba(5,15,33,.59) !important;
+    border-color:rgba(83,151,210,.34) !important;
+    box-shadow:0 10px 26px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.035);
+    backdrop-filter:blur(6px) !important;
+    -webkit-backdrop-filter:blur(6px) !important;
+  }
+  .mobile-perks span {
+    background:rgba(3,12,27,.42) !important;
+    border-color:rgba(102,164,214,.26) !important;
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+  }
+}}`;
 
 const MOBILE_MENU_SCRIPT = "(function () {\n  function initWrbtvMobileMenu() {\n    var menu = document.querySelector('.mobile-nav');\n    if (!menu || document.getElementById('wrbtv-mobile-menu-toggle')) return;\n    if (!menu.id) menu.id = 'wrbtv-mobile-menu';\n    var button = document.createElement('button');\n    button.id = 'wrbtv-mobile-menu-toggle';\n    button.className = 'mobile-menu-toggle';\n    button.type = 'button';\n    button.setAttribute('aria-label', 'Abrir menu');\n    button.setAttribute('aria-controls', menu.id);\n    button.setAttribute('aria-expanded', 'false');\n    button.innerHTML = '<span></span><span></span><span></span>';\n    document.body.appendChild(button);\n    function closeMenu() {\n      menu.classList.remove('mobile-nav-open');\n      button.setAttribute('aria-expanded', 'false');\n      button.setAttribute('aria-label', 'Abrir menu');\n    }\n    button.addEventListener('click', function (event) {\n      event.stopPropagation();\n      var isOpen = button.getAttribute('aria-expanded') === 'true';\n      if (isOpen) closeMenu();\n      else {\n        menu.classList.add('mobile-nav-open');\n        button.setAttribute('aria-expanded', 'true');\n        button.setAttribute('aria-label', 'Fechar menu');\n      }\n    });\n    menu.addEventListener('click', function (event) {\n      if (event.target && event.target.closest && event.target.closest('a')) closeMenu();\n    });\n    document.addEventListener('click', function (event) {\n      if (!menu.contains(event.target) && !button.contains(event.target)) closeMenu();\n    });\n    document.addEventListener('keydown', function (event) {\n      if (event.key === 'Escape') { closeMenu(); button.focus(); }\n    });\n    window.addEventListener('resize', function () {\n      if (window.innerWidth > 1020) closeMenu();\n    });\n  }\n  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initWrbtvMobileMenu, { once: true });\n  else initWrbtvMobileMenu();\n})();";
 
@@ -190,8 +242,8 @@ function enhanceHtml(html, asset, requestUrl) {
     html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
   }
 
-  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v6")) {
-    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v6">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
+  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v7")) {
+    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v7">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
     const mobileHeadClose = html.toLowerCase().lastIndexOf("</head>");
     if (mobileHeadClose >= 0) {
       html = html.slice(0, mobileHeadClose) + mobileStyleBlock + NL + html.slice(mobileHeadClose);
