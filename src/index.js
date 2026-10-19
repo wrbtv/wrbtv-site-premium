@@ -122,6 +122,7 @@ function resolveAsset(pathname) {
 
   if (decoded === "/" || decoded === "/index.html") return "index.html";
   if (decoded === "/revendedor.html") return "revendedor.html";
+  if (decoded === "/og-preview-v3.jpg") return "wrbtv-og-preview-v3.jpg";
 
   if (decoded.startsWith("/assets/")) {
     const name = decoded.slice("/assets/".length);
@@ -146,7 +147,7 @@ function enhanceHtml(html, asset, requestUrl) {
   const description = isReseller
     ? "Conheça o programa de revendedores WRB-TV e saiba como fazer parte."
     : "Canais ao vivo, filmes, séries, esportes e entretenimento em vários dispositivos. Acesse a WRB-TV e solicite seu teste gratuito.";
-  const shareImage = "https://wrbtv.com.br/assets/wrbtv-social-preview.jpg?rev=20261019e";
+  const shareImage = "https://wrbtv.com.br/og-preview-v3.jpg";
   const requestHost = requestUrl && new URL(requestUrl).hostname === "www.wrbtv.com.br" ? "www.wrbtv.com.br" : "wrbtv.com.br";
   const shareUrl = "https://" + requestHost + (isReseller ? "/revendedor.html" : "/");
 
@@ -162,12 +163,14 @@ function enhanceHtml(html, asset, requestUrl) {
     '<link rel="canonical" href="' + canonical + '">',
     '<link rel="icon" type="image/png" href="https://wrbtv.com.br/assets/wrbtv-logo.png">',
     '<link rel="apple-touch-icon" href="https://wrbtv.com.br/assets/wrbtv-logo.png">',
+    '<meta property="og:locale" content="pt_BR">',
     '<meta property="og:type" content="website">',
     '<meta property="og:site_name" content="WRB-TV">',
     '<meta property="og:url" content="' + shareUrl + '">',
     '<meta property="og:title" content="' + title + '">',
     '<meta property="og:description" content="' + description + '">',
     '<meta property="og:image" content="' + shareImage + '">',
+    '<meta property="og:image:url" content="' + shareImage + '">',
     '<meta property="og:image:secure_url" content="' + shareImage + '">',
     '<meta property="og:image:alt" content="WRB-TV: entretenimento premium, canais ao vivo, filmes e séries">',
     '<meta property="og:image:type" content="image/jpeg">',
@@ -176,7 +179,8 @@ function enhanceHtml(html, asset, requestUrl) {
     '<meta name="twitter:card" content="summary_large_image">',
     '<meta name="twitter:title" content="' + title + '">',
     '<meta name="twitter:description" content="' + description + '">',
-    '<meta name="twitter:image" content="' + shareImage + '">'
+    '<meta name="twitter:image" content="' + shareImage + '">',
+    '<meta name="twitter:image:alt" content="WRB-TV: entretenimento premium, canais ao vivo, filmes, séries e esportes">'
   ].join(NL);
 
   const headClose = html.toLowerCase().lastIndexOf("</head>");
@@ -231,7 +235,7 @@ export default {
     }
 
     try {
-      const isSocialPreview = asset === "wrbtv-social-preview.jpg";
+      const isSocialPreview = asset === "wrbtv-social-preview.jpg" || asset === "wrbtv-og-preview-v3.jpg";
       const upstreamAsset = isSocialPreview ? "home-reference.png" : asset;
       const upstreamUrl = RELEASE_BASE + encodeURIComponent(upstreamAsset);
       const upstream = await fetch(upstreamUrl, {
