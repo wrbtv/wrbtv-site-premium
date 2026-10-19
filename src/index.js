@@ -15,7 +15,7 @@ const ALLOWED_FILES = new Set([
   "app-vu-player-pro.png"
 ]);
 
-const MOBILE_PREMIUM_CSS = `@media (max-width:1020px) {
+const MOBILE_PREMIUM_CSS = `.mobile-menu-toggle { display:none !important; }\n@media (max-width:1020px) {
   html { min-height:100%; background:#030713 !important; scroll-padding-top:82px; }
   body { min-height:100vh; padding-top:76px !important; position:relative; isolation:isolate; background:transparent !important; overflow-x:clip !important; }
   body::before {
