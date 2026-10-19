@@ -1,60 +1,164 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050810">
-<meta name="description" content="WRB-TV: sua experiência de entretenimento em uma interface premium. Conheça os planos, dispositivos compatíveis e solicite seu teste grátis.">
-<meta property="og:title" content="WRB-TV | Entretenimento sem limites"><meta property="og:description" content="Seu próximo play começa aqui. Conheça a experiência WRB-TV.">
-<title>WRB-TV | Entretenimento sem limites</title>
-<link rel="icon" type="image/webp" href="/assets/wrbtv-logo.webp">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050812">
+<meta name="description" content="WRB-TV: entretenimento sem limites. Conheça os planos, confira a compatibilidade dos seus dispositivos e solicite seu teste pelo WhatsApp.">
+<meta property="og:title" content="WRB-TV | Entretenimento sem limites">
+<meta property="og:description" content="Filmes, séries, canais ao vivo e esportes em uma experiência premium para suas telas.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="/assets/wrbtv-logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css"><script defer src="/app.js"></script>
+<link rel="stylesheet" href="/styles.css">
+<script defer src="/app.js"></script>
+<title>WRB-TV | Entretenimento sem limites</title>
 </head>
 <body>
-<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
-<header class="header" id="topo"><nav class="nav wrap" aria-label="Navegação principal">
-<a class="brand" href="#inicio" aria-label="WRB-TV início"><img src="/assets/wrbtv-logo.webp" alt="WRB-TV, entretenimento sem limites"></a>
-<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu"><span></span><span></span></button>
-<div class="nav-links" id="navLinks"><a href="#experiencia">Experiência</a><a href="#dispositivos">Dispositivos</a><a href="#planos">Planos</a><a href="#revenda">Revenda</a><a href="#faq">Dúvidas</a><button class="btn btn-primary" data-modal="trial">Teste grátis <span>↗</span></button></div>
-</nav></header>
+<div class="ambient ambient-blue" aria-hidden="true"></div><div class="ambient ambient-red" aria-hidden="true"></div>
+<header class="header" id="topo">
+  <nav class="nav wrap" aria-label="Navegação principal">
+    <a class="brand" href="#inicio" aria-label="WRB-TV, início"><img src="/assets/wrbtv-logo.svg" alt="WRB-TV"><span class="brand-tagline">ENTRETENIMENTO<br><b>SEM LIMITES</b></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu"><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#experiencia">Experiência</a><a href="#dispositivos">Dispositivos</a><a href="#planos">Planos</a><a href="#revenda">Revenda</a><a href="#faq">Dúvidas</a>
+      <button class="button button-primary nav-cta" data-open-modal="trial">Solicitar teste <span aria-hidden="true">↗</span></button>
+    </div>
+  </nav>
+</header>
 <main>
-<section class="hero" id="inicio">
-<div class="slides" aria-hidden="true">
-<div class="slide active" data-kicker="WRB-TV · EXPERIÊNCIA PREMIUM" data-title="Seu próximo programa favorito" data-highlight="está a um play de distância." data-copy="Filmes, séries, esportes e canais ao vivo em uma experiência que acompanha o seu ritmo." style="--slide-image:url('/assets/hero-cinema.webp')"></div>
-<div class="slide" data-kicker="DÊ PLAY NOS SEUS MOMENTOS" data-title="Sua tela. Seu tempo." data-highlight="Seu jeito de assistir." data-copy="Descubra uma navegação feita para explorar com facilidade e aproveitar cada momento." style="--slide-image:url('/assets/hero-stage.webp')"></div>
-<div class="slide" data-kicker="AO VIVO, FILMES E SÉRIES" data-title="Mais entretenimento" data-highlight="em um só lugar." data-copy="Conheça os planos e escolha a experiência WRB-TV que combina com você." style="--slide-image:url('/assets/live-tv.webp')"></div>
-</div><div class="hero-overlay"></div>
-<div class="hero-main wrap">
-<div class="hero-copy" aria-live="polite"><div class="eyebrow"><i></i><span id="heroKicker">WRB-TV · EXPERIÊNCIA PREMIUM</span></div><h1><span id="heroTitle">Seu próximo programa favorito</span> <em id="heroHighlight">está a um play de distância.</em></h1><p id="heroCopy">Filmes, séries, esportes e canais ao vivo em uma experiência que acompanha o seu ritmo.</p>
-<div class="hero-actions"><button class="btn btn-primary btn-xl" data-modal="trial">Quero testar grátis <span>↗</span></button><a class="btn btn-glass btn-xl" href="#planos"><span class="play">▶</span> Conhecer os planos</a></div><div class="micro-proof"><span>✓</span> Teste grátis por até 4 horas <b>·</b> Sem fidelidade</div>
-</div>
-<div class="hero-visual"><div class="float-tag tag-top"><span class="tag-symbol">✦</span><span><b>Uma só experiência</b><small>Filmes · Séries · Ao vivo</small></span></div>
-<div class="screen-card" id="screenCard"><div class="screen-bar"><div class="lights"><i></i><i></i><i></i></div><span>WRB<span class="blue">-TV</span></span><small><i></i> PREMIUM</small></div><div class="screen-poster"><div class="poster-glow"></div><div class="poster-content"><small id="posterKicker">EXPLORE MAIS</small><strong id="posterTitle">Canais ao vivo</strong><span class="poster-play">▶</span></div></div><div class="screen-foot"><span>ENTRETENIMENTO SEM LIMITES</span><span class="signal">● ● ●</span></div></div>
-<div class="float-tag tag-bottom"><span class="device-icon">▣</span><span><b>Do seu jeito</b><small>TV, celular e computador</small></span></div></div>
-</div>
-<div class="hero-bottom wrap"><div class="dots" id="dots" role="group" aria-label="Escolher destaque"><button aria-label="Destaque 1" aria-pressed="true" class="active"></button><button aria-label="Destaque 2" aria-pressed="false"></button><button aria-label="Destaque 3" aria-pressed="false"></button></div><div class="arrows"><button id="prev" aria-label="Destaque anterior">←</button><button id="next" aria-label="Próximo destaque">→</button></div><span class="scroll-note">DESCUBRA A WRB-TV ↓</span></div>
+<section class="hero wrap" id="inicio">
+  <div class="hero-copy reveal">
+    <div class="eyebrow"><span class="status-dot"></span> SUA PRÓXIMA EXPERIÊNCIA COMEÇA AQUI</div>
+    <h1>O melhor do<br><span class="gradient-text">entretenimento.</span><br><span class="outline-text">Sem limites.</span></h1>
+    <p class="hero-desc">Filmes, séries, esportes e canais ao vivo em uma experiência que acompanha você. Descubra uma nova forma de aproveitar suas telas.</p>
+    <div class="hero-actions">
+      <button class="button button-primary button-large" data-open-modal="trial">Quero meu teste gratuito <span aria-hidden="true">↗</span></button>
+      <a class="button button-glass button-large" href="#planos">Conhecer os planos <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hero-proof"><span class="proof-symbol">✓</span><div><strong>Comece do seu jeito</strong><span>Solicitação simples e atendimento pelo WhatsApp.</span></div></div>
+  </div>
+  <div class="hero-stage reveal">
+    <div class="stage-orbit orbit-one"></div><div class="stage-orbit orbit-two"></div>
+    <div class="stage-overline"><span class="status-dot"></span> EXPERIÊNCIA WRB-TV <span class="stage-overline-line"></span> <span>01 / 04</span></div>
+    <div class="tv-scene">
+      <div class="tv-bezel"><div class="tv-screen">
+        <img class="tv-scene-image" src="/assets/hero-cinema.webp" alt="Ambiente cinematográfico para uma experiência de entretenimento">
+        <div class="tv-screen-shade"></div>
+        <div class="tv-screen-ui"><span class="screen-logo">WRB<span>•</span>TV</span><span class="screen-live"><i></i> SUA CENTRAL DE ENTRETENIMENTO</span></div>
+        <div class="tv-screen-copy"><span class="screen-kicker">UMA PLATAFORMA. MUITAS POSSIBILIDADES.</span><h2>Seu próximo<br>favorito está aqui.</h2><div class="screen-play"><span>▶</span><div><b>Descubra a WRB-TV</b><small>Filmes · Séries · Ao vivo</small></div></div></div>
+        <div class="tv-screen-bottom"><span class="screen-equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>ENTRETENIMENTO SEM LIMITES</span></div>
+      </div></div>
+      <div class="tv-neck"></div><div class="tv-foot"></div>
+    </div>
+    <div class="float-card float-live"><span class="float-icon icon-blue">◉</span><span><b>Canais ao vivo</b><small>Informação e ação</small></span><span class="float-arrow">↗</span></div>
+    <div class="float-card float-movies"><span class="float-icon icon-red">▶</span><span><b>Sua próxima sessão</b><small>Escolha e aproveite</small></span></div>
+    <div class="stage-caption stage-caption-bottom"><span>FEITO PARA SUAS TELAS</span><span>•</span><span>UM UNIVERSO DE POSSIBILIDADES</span></div>
+  </div>
+  <div class="hero-bottom"><span>AO VIVO</span><i></i><span>FILMES</span><i></i><span>SÉRIES</span><i></i><span>ESPORTES</span><span class="hero-bottom-right">SEU ENTRETENIMENTO, DO SEU JEITO <b>↘</b></span></div>
 </section>
-<section class="trust wrap"><div class="trust-item"><span>✦</span><div><b>Experiência intuitiva</b><small>Navegação simples</small></div></div><div class="trust-item"><span>▣</span><div><b>Vários dispositivos</b><small>Escolha onde assistir</small></div></div><div class="trust-item"><span>◷</span><div><b>Sem fidelidade</b><small>Planos mensais</small></div></div><div class="trust-item"><span>♡</span><div><b>Atendimento próximo</b><small>Suporte pelo WhatsApp</small></div></div></section>
-<section class="section wrap" id="experiencia"><div class="section-title"><div><span class="kicker">DESCUBRA SEU PRÓXIMO PLAY</span><h2>Mais opções para <em>curtir do seu jeito.</em></h2></div><p>Uma vitrine para conhecer a experiência WRB-TV antes de escolher seu plano.</p></div>
-<div class="show-grid"><article class="show wide tilt"><img loading="lazy" src="/assets/movies.webp" alt="Ambiente de cinema"><div class="show-shade"></div><div class="show-copy"><span class="mini">PARA SUA PRÓXIMA SESSÃO</span><h3>Uma história para cada momento.</h3><p>Prepare a sessão, escolha o que combina com você e dê o play.</p><a href="#planos">Conhecer planos ↗</a></div></article>
-<article class="show tilt"><img loading="lazy" src="/assets/series.webp" alt="Experiência audiovisual"><div class="show-shade"></div><div class="show-copy"><span class="mini">NÃO PERCA O MOMENTO</span><h3>Ao vivo com você.</h3><p>Uma experiência para acompanhar de onde estiver.</p><a href="#planos">Quero conhecer ↗</a></div></article>
-<article class="show tilt"><img loading="lazy" src="/assets/live-tv.webp" alt="Sala de cinema"><div class="show-shade"></div><div class="show-copy"><span class="mini">ESCOLHA SEU PRÓXIMO PLAY</span><h3>No seu ritmo.</h3><p>Descubra sua próxima maratona de séries.</p><a href="#planos">Ver opções ↗</a></div></article></div>
+
+<section class="experience section wrap" id="experiencia">
+  <div class="section-heading reveal"><span class="kicker">UM UNIVERSO DE POSSIBILIDADES</span><h2>Seu entretenimento.<br><span class="muted">Do seu jeito.</span></h2><p>Explore diferentes formas de aproveitar cada momento em uma experiência feita para você.</p></div>
+  <div class="content-grid reveal">
+    <article class="content-card content-live"><img src="/assets/live-tv.webp" alt="" loading="lazy"><div class="card-gradient"></div><div class="content-card-top"><span>01 / EM TEMPO REAL</span><span class="round-arrow">↗</span></div><div class="content-card-copy"><small>ACOMPANHE AGORA</small><h3>Canais ao vivo</h3><p>Informação, variedades e muito mais para o seu dia.</p></div></article>
+    <article class="content-card content-movies"><img src="/assets/movies.webp" alt="" loading="lazy"><div class="card-gradient"></div><div class="content-card-top"><span>02 / A LUZ SE APAGA</span><span class="round-arrow">↗</span></div><div class="content-card-copy"><small>SUA PRÓXIMA SESSÃO</small><h3>Filmes</h3><p>Uma sessão para cada estado de espírito.</p></div></article>
+    <article class="content-card content-series"><img src="/assets/series.webp" alt="" loading="lazy"><div class="card-gradient"></div><div class="content-card-top"><span>03 / SÓ MAIS UM EPISÓDIO</span><span class="round-arrow">↗</span></div><div class="content-card-copy"><small>HISTÓRIAS QUE PRENDEM</small><h3>Séries</h3><p>Encontre histórias que fazem você querer continuar.</p></div></article>
+  </div>
 </section>
-<section class="devices-section" id="dispositivos"><div class="wrap devices"><div class="device-copy"><span class="kicker">COMPATIBILIDADE</span><h2>Seu entretenimento.<br><em>Suas telas.</em></h2><p>Acesse por dispositivos compatíveis e aproveite a experiência onde fizer sentido para você. A disponibilidade pode variar conforme o aparelho e a versão do aplicativo.</p><div class="device-list"><span>✓ Smart TVs compatíveis</span><span>✓ Android e TV Box</span><span>✓ iPhone e iPad</span><span>✓ Windows e navegadores compatíveis</span><span>✓ Fire TV Stick e outros aparelhos compatíveis</span></div><button class="btn btn-glass" data-modal="trial">Descobrir como começar <span>↗</span></button></div><div class="device-art"><div class="device-halo"></div><div class="device-tv"><div class="device-screen"><img loading="lazy" src="/assets/home-ui.webp" alt="Televisão em uma sala moderna"><div class="device-screen-glass"><span>WRB-TV</span><b>ENTRETENIMENTO<br>SEM LIMITES</b><i>▶</i></div></div><div class="tv-stand"></div></div><div class="device-phone"><div class="phone-screen"><span>WRB<span>-TV</span></span><div>▶</div><small>Sua experiência<br>em qualquer lugar</small></div></div><div class="device-chip">DESIGN RESPONSIVO <span>✦</span></div></div></div></section>
-<section class="section plans-section" id="planos"><div class="wrap"><div class="section-title centered"><div><span class="kicker">ESCOLHA SUA EXPERIÊNCIA</span><h2>O plano ideal para <em>dar o play.</em></h2></div><p>Valores claros, planos mensais e sem fidelidade.</p></div>
-<div class="plans"><article class="plan"><div class="plan-head"><span class="plan-glyph">✦</span><span class="plan-label">PARA TODA A FAMÍLIA</span></div><h3>WRB-TV Essencial</h3><p class="plan-desc">Sem conteúdo adulto</p><div class="price"><small>R$</small><strong>30</strong><span>,00 <small>/ mês</small></span></div><div class="rule"></div><ul><li>2 telas</li><li>Canais ao vivo</li><li>Filmes e séries</li><li>Esportes e futebol</li><li>Atendimento das 07h às 20h</li></ul><button class="btn btn-glass full" data-modal="subscription" data-plan="Mensal sem conteúdo adulto" data-price="R$ 30,00/mês">Quero este plano <span>↗</span></button><small class="fine">Plano mensal · Sem fidelidade</small></article>
-<article class="plan featured"><div class="plan-ribbon">OPÇÃO COM 18+</div><div class="plan-head"><span class="plan-glyph red">✦</span><span class="plan-label">CONTEÚDO ADULTO INCLUSO</span></div><h3>WRB-TV Completo</h3><p class="plan-desc">Conteúdo adulto 18+ incluso</p><div class="price"><small>R$</small><strong>35</strong><span>,00 <small>/ mês</small></span></div><div class="rule"></div><ul><li>2 telas</li><li>Canais ao vivo</li><li>Filmes e séries</li><li>Esportes e futebol</li><li>Conteúdo adulto 18+</li><li>Atendimento das 07h às 20h</li></ul><button class="btn btn-primary full" data-modal="subscription" data-plan="Mensal com conteúdo adulto" data-price="R$ 35,00/mês">Quero este plano <span>↗</span></button><small class="fine">Plano mensal · Sem fidelidade</small></article></div>
-<p class="plan-note">A solicitação será encaminhada ao atendimento pelo WhatsApp. A equipe confirmará disponibilidade, condições e instruções de contratação antes de qualquer pagamento.</p></div></section>
-<section class="reseller-section" id="revenda"><div class="wrap reseller"><div class="reseller-copy"><span class="kicker">CRESÇA COM A WRB-TV</span><h2>Um novo caminho para <em>empreender.</em></h2><p>Tem interesse em revender? Escolha uma faixa de créditos e envie seus dados para conversar com nossa equipe sobre as condições de parceria.</p><div class="tiers"><button class="tier selected" data-tier="Bronze" data-rate="9" data-min="10" data-max="49"><b>◆ Bronze</b><small>10 a 49 créditos</small><strong>R$ 9,00 <small>/ crédito</small></strong></button><button class="tier" data-tier="Prata" data-rate="7.5" data-min="50" data-max="99"><b>◆ Prata</b><small>50 a 99 créditos</small><strong>R$ 7,50 <small>/ crédito</small></strong></button><button class="tier" data-tier="Ouro" data-rate="6" data-min="100" data-max=""><b>◆ Ouro</b><small>100+ créditos</small><strong>R$ 6,00 <small>/ crédito</small></strong></button></div><p class="hint" id="tierHint">Faixa Bronze: de 10 a 49 créditos.</p></div><form class="reseller-form" id="resellerForm"><label for="resellerName">Seu nome</label><input id="resellerName" required minlength="3" placeholder="Como podemos chamar você?"><label for="resellerPhone">WhatsApp com DDD</label><input id="resellerPhone" required inputmode="tel" placeholder="(00) 00000-0000"><label for="credits">Quantidade de créditos</label><input id="credits" type="number" min="10" value="10" required><div class="estimate"><span>Valor estimado</span><strong id="estimate">R$ 90,00</strong></div><button class="btn btn-primary full" type="submit">Conversar sobre revenda <span>↗</span></button><small class="fine">Estimativa informativa. A equipe confirmará os detalhes.</small></form></div></section>
-<section class="section faq-section wrap" id="faq"><div class="section-title"><div><span class="kicker">AINDA TEM DÚVIDAS?</span><h2>Informação para <em>escolher com segurança.</em></h2></div><p>Confira as respostas mais comuns ou converse com nosso atendimento.</p></div><div class="faq-list">
-<details><summary>Como solicito o teste grátis?<span></span></summary><p>Clique em “Teste grátis”, preencha seus dados e envie a mensagem preparada para o WhatsApp. A equipe orientará a liberação de um teste de até 4 horas.</p></details>
-<details><summary>Quais são os valores dos planos?<span></span></summary><p>O plano mensal sem conteúdo adulto custa R$ 30,00. O plano mensal com conteúdo adulto 18+ custa R$ 35,00. Ambos incluem 2 telas.</p></details>
-<details><summary>Em quais dispositivos funciona?<span></span></summary><p>A compatibilidade depende do dispositivo, sistema e versão do aplicativo. Informe o modelo do aparelho ao atendimento para receber a orientação correta.</p></details>
-<details><summary>O site realiza o pagamento?<span></span></summary><p>Não. O site apenas prepara uma solicitação no WhatsApp. A equipe confirma as condições e envia as orientações de contratação e pagamento por atendimento.</p></details>
-<details><summary>Existe fidelidade ou renovação automática?<span></span></summary><p>Os planos apresentados são mensais e sem fidelidade. Confirme com o atendimento como funciona a renovação antes de contratar.</p></details>
-</div><div class="faq-cta"><div><b>Não encontrou sua resposta?</b><span>Fale com a equipe WRB-TV pelo WhatsApp.</span></div><a class="btn btn-glass" href="https://wa.me/5588996484494" target="_blank" rel="noopener">Falar com atendimento ↗</a></div></section>
+
+<section class="manifesto section">
+  <div class="wrap manifesto-grid">
+    <div class="manifesto-art reveal"><div class="manifesto-ring ring-a"></div><div class="manifesto-ring ring-b"></div><div class="manifesto-cross cross-a"></div><div class="manifesto-cross cross-b"></div><div class="manifesto-core"><img src="/assets/wrbtv-logo.svg" alt="WRB-TV"><span>SEM LIMITES</span></div><div class="art-label art-label-a">EXPERIÊNCIA 01 <i></i> WRB-TV</div><div class="art-label art-label-b">ENTRETENIMENTO EM MOVIMENTO</div><div class="art-baseline"></div></div>
+    <div class="manifesto-copy reveal"><span class="kicker">NÃO É SÓ DAR PLAY</span><h2>É ter mais tempo<br>para o que <span class="gradient-text">importa.</span></h2><p>Uma experiência pensada para deixar a tecnologia em segundo plano e o seu momento em primeiro. Escolha seu dispositivo, conheça as opções e fale com a equipe para começar.</p><div class="stats-row"><div><b>02</b><span>telas simultâneas<br>por plano</span></div><i></i><div><b>01</b><span>experiência para<br>suas telas</span></div><i></i><div><b>∞</b><span>possibilidades de<br>entretenimento</span></div></div><a class="text-link" href="#planos">Encontre seu plano <span>↗</span></a></div>
+  </div>
+</section>
+
+<section class="devices-section section wrap" id="dispositivos">
+  <div class="section-heading heading-row reveal"><div><span class="kicker">UMA EXPERIÊNCIA, VÁRIAS TELAS</span><h2>Assista do seu<br><span class="muted">jeito.</span></h2></div><p>Escolha o aparelho que combina com sua rotina. A compatibilidade depende do modelo e do sistema instalado.</p></div>
+  <div class="device-grid reveal">
+    <article class="device-card"><span class="device-index">01</span><span class="device-glyph">▣</span><h3>Smart TV</h3><p>Samsung, LG e outras marcas</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+    <article class="device-card"><span class="device-index">02</span><span class="device-glyph">▤</span><h3>Android TV</h3><p>Uma nova experiência na televisão</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+    <article class="device-card"><span class="device-index">03</span><span class="device-glyph">▰</span><h3>Fire TV Stick</h3><p>Praticidade direto na sua TV</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+    <article class="device-card"><span class="device-index">04</span><span class="device-glyph">▣</span><h3>TV Box</h3><p>Em aparelhos compatíveis</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+    <article class="device-card"><span class="device-index">05</span><span class="device-glyph">▯</span><h3>Android</h3><p>Entretenimento no celular</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+    <article class="device-card"><span class="device-index">06</span><span class="device-glyph">▯</span><h3>iPhone e iPad</h3><p>Também nos dispositivos Apple</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+    <article class="device-card"><span class="device-index">07</span><span class="device-glyph">▱</span><h3>Windows</h3><p>No computador ou notebook</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+    <article class="device-card"><span class="device-index">08</span><span class="device-glyph">▱</span><h3>Mac e notebook</h3><p>Na tela que estiver mais perto</p><span class="device-availability"><i></i> Consulte a compatibilidade</span></article>
+  </div>
+  <div class="device-note reveal"><span class="note-glyph">?</span><p><b>Não sabe se seu aparelho é compatível?</b><span>Informe marca e modelo no formulário. Nossa equipe orienta você antes de começar.</span></p><button class="button button-outline" data-open-modal="trial">Verificar meu aparelho <span>↗</span></button></div>
+</section>
+
+<section class="plans-section section" id="planos">
+  <div class="wrap">
+    <div class="section-heading heading-row reveal"><div><span class="kicker">CLAREZA PARA ESCOLHER</span><h2>Seu plano.<br><span class="muted">Sem complicação.</span></h2></div><p>Duas opções mensais, com 2 telas simultâneas. Escolha a que combina com você.</p></div>
+    <div class="plan-assurance reveal"><span class="assurance-check">✓</span> Planos mensais sem fidelidade <i></i><span>Confirmação e atendimento pelo WhatsApp</span></div>
+    <div class="plans-grid reveal">
+      <article class="plan-card"><div class="plan-top"><span class="plan-symbol">✦</span><span class="plan-eyebrow">PARA TODA A FAMÍLIA</span></div><h3>WRB-TV Essencial</h3><p class="plan-description">Uma experiência completa, sem conteúdo adulto.</p><div class="plan-price"><span>R$</span><strong>30</strong><small>,00 <i>/mês</i></small></div><div class="plan-rule"><span>O QUE ESTÁ INCLUÍDO</span><i></i></div><ul class="plan-features"><li><span>✓</span> 2 telas simultâneas</li><li><span>✓</span> Canais ao vivo</li><li><span>✓</span> Filmes e séries</li><li><span>✓</span> Esportes e futebol</li><li><span>✓</span> Atendimento das 07h às 20h</li></ul><button class="button button-plan" data-open-modal="subscription" data-plan="Mensal sem conteúdo adulto" data-price="30">Escolher este plano <span>↗</span></button><p class="plan-footnote">✓ Confirmação pelo WhatsApp</p></article>
+      <article class="plan-card plan-highlight"><div class="plan-ribbon">OPÇÃO COM 18+</div><div class="plan-top"><span class="plan-symbol symbol-red">✦</span><span class="plan-eyebrow">EXPERIÊNCIA PLUS</span></div><h3>WRB-TV Completo</h3><p class="plan-description">Entretenimento completo com opção de conteúdo adulto.</p><div class="plan-price"><span>R$</span><strong>35</strong><small>,00 <i>/mês</i></small></div><div class="plan-rule"><span>O QUE ESTÁ INCLUÍDO</span><i></i></div><ul class="plan-features"><li><span>✓</span> 2 telas simultâneas</li><li><span>✓</span> Canais ao vivo</li><li><span>✓</span> Filmes e séries</li><li><span>✓</span> Esportes e futebol</li><li><span>✓</span> Conteúdo adulto 18+</li><li><span>✓</span> Atendimento das 07h às 20h</li></ul><button class="button button-red" data-open-modal="subscription" data-plan="Mensal com conteúdo adulto" data-price="35">Escolher este plano <span>↗</span></button><p class="plan-footnote">✓ Confirmação pelo WhatsApp</p></article>
+    </div>
+    <p class="plan-disclaimer">Valores mensais informativos. Conteúdos, disponibilidade e compatibilidade podem variar. A equipe confirmará as condições completas antes da contratação.</p>
+  </div>
+</section>
+
+<section class="reseller-section section" id="revenda">
+  <div class="wrap reseller-grid">
+    <div class="reseller-copy reveal"><span class="kicker">CRESÇA COM A WRB-TV</span><h2>Uma nova forma<br>de <span class="gradient-text">empreender.</span></h2><p>Tem interesse em revender? Escolha uma faixa de créditos e envie seus dados para conversar com a nossa equipe sobre as condições de parceria.</p><div class="tier-grid">
+      <button class="tier active" data-tier="Bronze" data-rate="9" data-min="10" data-max="49"><span>01 / BRONZE</span><b>R$ 9,00 <small>/crédito</small></b><i>10 a 49 créditos</i></button>
+      <button class="tier" data-tier="Prata" data-rate="7.5" data-min="50" data-max="99"><span>02 / PRATA</span><b>R$ 7,50 <small>/crédito</small></b><i>50 a 99 créditos</i></button>
+      <button class="tier" data-tier="Ouro" data-rate="6" data-min="100" data-max=""><span>03 / OURO</span><b>R$ 6,00 <small>/crédito</small></b><i>100+ créditos</i></button>
+    </div><p class="tier-hint" id="tierHint">Faixa Bronze: de 10 a 49 créditos.</p></div>
+    <form class="reseller-form reveal" id="resellerForm">
+      <div class="form-eyebrow"><span class="status-dot"></span> PROGRAMA DE REVENDA</div><h3>Vamos conversar?</h3><p>Calcule sua estimativa e envie a solicitação para o WhatsApp.</p>
+      <label for="resellerName">Seu nome</label><input id="resellerName" required minlength="3" autocomplete="name" placeholder="Como podemos chamar você?">
+      <label for="resellerPhone">WhatsApp com DDD</label><input id="resellerPhone" required inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000">
+      <label for="credits">Quantidade de créditos</label><input id="credits" type="number" min="10" max="49" value="10" required>
+      <div class="estimate-row"><span>Valor estimado</span><strong id="estimate">R$ 90,00</strong></div>
+      <button class="button button-primary form-submit" type="submit">Conversar sobre revenda <span>↗</span></button><small class="form-small">Estimativa informativa. A equipe confirmará as condições.</small>
+    </form>
+  </div>
+</section>
+
+<section class="faq-section section wrap" id="faq">
+  <div class="faq-heading reveal"><span class="kicker">DÚVIDAS FREQUENTES</span><h2>Antes de<br><span class="muted">dar o play.</span></h2><p>Informação clara para você escolher com confiança.</p><a href="https://wa.me/5588996484494" target="_blank" rel="noopener noreferrer" class="text-link">Ainda tem dúvidas? Fale com a equipe <span>↗</span></a></div>
+  <div class="faq-list reveal">
+    <details open><summary><span>01</span><b>Como funciona o teste gratuito?</b><i>+</i></summary><p>Você pode solicitar um teste gratuito de até 4 horas para conhecer a experiência. Preencha os dados e nossa equipe dará continuidade pelo WhatsApp.</p></details>
+    <details><summary><span>02</span><b>Quais são os valores dos planos?</b><i>+</i></summary><p>O plano mensal sem conteúdo adulto custa R$ 30,00. O plano mensal com conteúdo adulto 18+ custa R$ 35,00. Ambos incluem 2 telas simultâneas.</p></details>
+    <details><summary><span>03</span><b>Em quais dispositivos posso assistir?</b><i>+</i></summary><p>A compatibilidade varia conforme aparelho, sistema e versão. Informe a marca e o modelo no formulário para receber orientação da equipe.</p></details>
+    <details><summary><span>04</span><b>Como faço para assinar?</b><i>+</i></summary><p>Escolha seu plano e preencha o formulário. O WhatsApp será aberto com a mensagem pronta para você revisar e enviar. A equipe confirmará os próximos passos.</p></details>
+    <details><summary><span>05</span><b>O site realiza o pagamento?</b><i>+</i></summary><p>Não. O site apenas prepara uma solicitação no WhatsApp. A equipe confirma as condições e envia as orientações de contratação e pagamento.</p></details>
+    <details><summary><span>06</span><b>Existe fidelidade?</b><i>+</i></summary><p>Os planos apresentados são mensais e sem fidelidade. Consulte o atendimento para confirmar todas as condições do serviço.</p></details>
+  </div>
+</section>
+
+<section class="closing-section wrap reveal"><div class="closing-glow"></div><div class="closing-copy"><span class="kicker"><span class="status-dot"></span> A PRÓXIMA ESCOLHA É SUA</span><h2>Seu entretenimento<br><span class="gradient-text">está esperando.</span></h2><p>Conheça a WRB-TV com um teste ou encontre o plano certo para você.</p><div class="closing-actions"><button class="button button-primary button-large" data-open-modal="trial">Começar com teste gratuito <span>↗</span></button><a class="button button-glass button-large" href="#planos">Ver planos</a></div></div><div class="closing-logo"><img src="/assets/wrbtv-logo.svg" alt="WRB-TV"></div></section>
 </main>
-<footer class="footer"><div class="wrap footer-main"><a href="#inicio"><img src="/assets/wrbtv-logo.webp" alt="WRB-TV"></a><p>Entretenimento sem limites. Uma experiência criada para acompanhar você.</p><div class="footer-links"><a href="#planos">Planos</a><a href="#dispositivos">Compatibilidade</a><a href="#faq">Perguntas frequentes</a><a href="https://wa.me/5588996484494" target="_blank" rel="noopener">WhatsApp</a></div></div><div class="wrap footer-bottom"><span>© <span id="year"></span> WRB-TV. Todos os direitos reservados.</span><a href="#topo">Voltar ao topo ↑</a></div></footer>
-<div class="modal-backdrop" id="requestModal" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Fechar">×</button><span class="kicker" id="modalKicker">WRB-TV · PRIMEIRO PLAY</span><h2 id="modalTitle">Solicite seu teste grátis</h2><p id="modalLead">Preencha seus dados para continuar ao WhatsApp.</p><form id="requestForm"><input type="hidden" id="requestMode" value="trial"><input type="hidden" id="requestPlan"><input type="hidden" id="requestPrice"><label for="fullName">Seu nome</label><input id="fullName" required minlength="3" autocomplete="name" placeholder="Nome completo"><label for="phone">WhatsApp com DDD</label><input id="phone" required inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000"><label for="deviceType">Onde pretende assistir?</label><select id="deviceType" required><option value="">Selecione um dispositivo</option><option>Smart TV</option><option>Android / TV Box</option><option>iPhone / iPad</option><option>Windows / computador</option><option>Fire TV Stick</option><option>Outro dispositivo</option></select><label for="deviceBrand">Marca do aparelho</label><select id="deviceBrand" required><option value="">Selecione a marca</option><option>Samsung</option><option>LG</option><option>Philips</option><option>TCL</option><option>Amazon Fire TV</option><option>Apple</option><option>Motorola</option><option>Samsung Android</option><option>Xiaomi</option><option>Outra</option></select><div id="customBrandWrap" hidden><label for="customBrand">Qual marca?</label><input id="customBrand" placeholder="Informe a marca"></div><label for="deviceModel">Modelo (opcional)</label><input id="deviceModel" placeholder="Modelo do aparelho"><label for="source">Como conheceu a WRB-TV? (opcional)</label><select id="source"><option value="">Selecione (opcional)</option><option>Indicação</option><option>Redes sociais</option><option>Google</option><option>Já sou cliente</option><option>Outro</option></select><button class="btn btn-primary full" id="submitRequest" type="submit">Continuar para o WhatsApp ↗</button><small class="fine">Nenhum pagamento é processado nesta página.</small></form></section></div>
-</body></html>
+<footer class="footer">
+  <div class="wrap footer-main"><a class="footer-brand" href="#inicio"><img src="/assets/wrbtv-logo.svg" alt="WRB-TV"><span>ENTRETENIMENTO<br><b>SEM LIMITES</b></span></a><p>Uma experiência de entretenimento para acompanhar você e as suas telas.</p><div class="footer-links"><a href="#experiencia">Experiência</a><a href="#dispositivos">Dispositivos</a><a href="#planos">Planos</a><a href="#revenda">Revenda</a><a href="#faq">Dúvidas</a></div><a class="footer-whatsapp" href="https://wa.me/5588996484494" target="_blank" rel="noopener noreferrer">◉ Fale com a WRB-TV <span>↗</span></a></div>
+  <div class="wrap footer-bottom"><span>© <span id="year"></span> WRB-TV. Todos os direitos reservados.</span><span class="footer-signature">ENTRETENIMENTO SEM LIMITES</span><a href="#topo">VOLTAR AO TOPO ↑</a></div>
+</footer>
+
+<div class="modal-backdrop" id="requestModal" hidden>
+  <section class="request-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-topline"><span class="modal-logo"><img src="/assets/wrbtv-logo.svg" alt="WRB-TV"></span><button type="button" class="modal-close" id="modalClose" aria-label="Fechar formulário">×</button></div>
+    <span class="kicker" id="modalKicker">WRB-TV · SOLICITAÇÃO</span><h2 id="modalTitle">Vamos começar?</h2><p class="modal-intro" id="modalLead">Preencha seus dados para solicitar seu teste gratuito.</p>
+    <div class="selected-plan" id="selectedPlan" hidden><span><small>PLANO SELECIONADO</small><b id="selectedPlanName"></b></span><strong id="selectedPlanPrice"></strong></div>
+    <form id="requestForm">
+      <div class="form-section-label"><span>01</span><b>Seus dados</b><i></i></div>
+      <label for="fullName">Nome completo <em>*</em></label><input id="fullName" required minlength="3" autocomplete="name" placeholder="Como podemos chamar você?">
+      <label for="phone">WhatsApp com DDD <em>*</em></label><input id="phone" required inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000">
+      <label for="source">Como conheceu a WRB-TV?</label><select id="source"><option value="">Selecione uma opção</option><option>Instagram</option><option>Facebook</option><option>Google</option><option>Indicação</option><option>TikTok</option><option>YouTube</option><option>Outro</option></select>
+      <div id="sourceOtherWrap" hidden><label for="sourceOther">Conte onde nos encontrou</label><input id="sourceOther" placeholder="Informe a origem"></div>
+      <div class="form-section-label form-section-device"><span>02</span><b>Seu dispositivo</b><i></i></div>
+      <label for="deviceType">Tipo de dispositivo <em>*</em></label><select id="deviceType" required><option value="">Onde pretende assistir?</option><option>Smart TV</option><option>Android TV</option><option>TV Box</option><option>Fire TV Stick</option><option>Celular Android</option><option>iPhone</option><option>iPad / Tablet</option><option>Windows / computador</option><option>Mac / notebook</option><option>Outro dispositivo</option></select>
+      <label for="deviceBrand">Marca do aparelho <em>*</em></label><select id="deviceBrand" required><option value="">Selecione a marca</option><option>Samsung</option><option>LG</option><option>Philips</option><option>AOC</option><option>TCL</option><option>Sony</option><option>Hisense</option><option>Xiaomi</option><option>Amazon</option><option>Apple</option><option>Intelbras</option><option>Multilaser</option><option>Motorola</option><option>Outra</option></select>
+      <div id="customBrandWrap" hidden><label for="customBrand">Qual é a marca? <em>*</em></label><input id="customBrand" placeholder="Informe a marca"></div>
+      <label for="deviceModel">Modelo do dispositivo (opcional)</label><input id="deviceModel" placeholder="Ex.: modelo da TV, TV Box ou celular">
+      <button class="button button-primary form-submit" id="submitRequest" type="submit">Solicitar teste gratuito <span>↗</span></button><p class="form-privacy">✓ Seus dados serão enviados apenas na mensagem que você revisar e encaminhar.</p><p class="form-small">O WhatsApp abrirá com a solicitação preenchida. Você precisará tocar em enviar para concluir.</p>
+    </form>
+  </section>
+</div>
+</body>
+</html>
