@@ -1,40 +1,35 @@
-# WRB-TV Site Premium
+# WRB-TV Premium
 
-Nova versão independente do site comercial WRB-TV, reformulada a partir da exportação da Lovable com foco em conversão, navegação responsiva e apresentação premium.
+Site comercial estático da WRB-TV, com identidade visual escura, detalhes em azul elétrico e vermelho, composição cinematográfica em 3D e layout responsivo para desktop, tablet e celular.
 
-## O que contém
+## O site inclui
 
-- Carrossel cinematográfico de três destaques, controles manuais e avanço automático.
-- Identidade visual WRB-TV em SVG local, paleta azul/ciano/vermelho e profundidade 3D discreta.
-- Vitrine visual, compatibilidade de dispositivos, planos, revenda com calculadora de créditos e FAQ.
-- Formulários de teste grátis e assinatura que encaminham uma mensagem preparada ao WhatsApp **+55 88 99648-4494**.
-- Planos mensais: R$ 30,00 sem conteúdo adulto e R$ 35,00 com conteúdo 18+, ambos com 2 telas.
-- Revenda: Bronze R$ 9,00 (10–49 créditos), Prata R$ 7,50 (50–99) e Ouro R$ 6,00 (100+).
-- Site estático em `public/`, servido pelo recurso Cloudflare Workers Static Assets através de `wrangler.toml`.
+- Hero cinematográfico com efeitos de profundidade e uso do logo oficial da WRB-TV.
+- Seções de canais ao vivo, filmes, séries, manifesto de marca e dispositivos compatíveis.
+- Planos mensais e formulário de solicitação via WhatsApp.
+- Formulário de teste gratuito com nome, WhatsApp, origem do contato, tipo de aparelho, marca e modelo.
+- Área de revenda com calculadora de créditos e três faixas de preço: Bronze R$ 9,00 (10–49 créditos), Prata R$ 7,50 (50–99) e Ouro R$ 6,00 (100+).
+- FAQ, navegação móvel e formulário modal com validação, controle por teclado e opção de fechar com Esc.
+- Encaminhamento de solicitações para WhatsApp **+55 88 99648-4494**. O site não coleta pagamentos nem armazena dados enviados pelos formulários.
 
-## Publicação de teste na interface Cloudflare que já está aberta
+## Valores comerciais apresentados
 
-A interface mostrada pelo painel oferece um projeto **Worker** com Git integrado. Para aproveitar essa tela, o repositório já contém `wrangler.toml` e `src/index.js` configurados para servir os arquivos estáticos do diretório `public/`.
+- Plano mensal sem conteúdo adulto: **R$ 30,00/mês**.
+- Plano mensal com conteúdo adulto 18+: **R$ 35,00/mês**.
+- Ambos os planos informam **2 telas simultâneas**.
 
-Use estes valores na tela **Set up your application**:
+## Publicação
 
-- **Repository:** `wrbtv/wrbtv-site-premium`
-- **Project name:** `wrbtv-site-premium`
-- **Build command:** deixe vazio
-- **Deploy command:** `npx wrangler deploy`
-- **Preview command:** deixe o padrão `npx wrangler preview`
-- **Enable Preview builds:** pode permanecer ligado
-- **Protect with Cloudflare Access:** deixe desligado, para a prévia poder ser aberta sem login
+O repositório mantém a arquitetura Cloudflare Workers Static Assets. O Worker serve diretamente os arquivos do diretório public usando src/index.js e wrangler.toml, sem etapa de compilação nem dependência de React/Vite.
 
-Depois clique **Deploy**. O resultado esperado é um endereço temporário em `workers.dev`. O Git integrado pode publicar commits posteriores automaticamente; confirme a configuração de builds do repositório após a primeira implantação.
+Para publicar manualmente com Wrangler:
 
-## Limites de segurança da migração
+1. Autentique o Wrangler na conta Cloudflare que contém o Worker wrbtv-site-premium.
+2. Execute npx wrangler deploy na raiz do repositório.
+3. Confirme a URL de produção e teste os formulários e links de WhatsApp.
 
-- Este é um projeto Cloudflare novo e independente.
-- Não conecte o domínio próprio na fase de teste.
-- Não altere Workers, Pages, DNS ou repositórios de outros projetos.
-- Não altere os aplicativos WRB-TV Windows, Android, Linux, macOS, iPhone ou Smart TV.
+Se o Worker estiver conectado ao GitHub para implantação contínua, os commits em main devem iniciar uma nova implantação. Confirme o resultado na aba Deployments do Worker; o sucesso do teste de CI do GitHub não substitui a confirmação do deploy em produção.
 
-## Fluxos comerciais
+## Testes automatizados
 
-O site não processa pagamentos e não armazena os formulários. Ao enviar um formulário, o navegador monta uma mensagem e abre o WhatsApp para o cliente revisar e enviar. A equipe deve confirmar condições, disponibilidade e instruções de contratação durante o atendimento.
+O workflow .github/workflows/validate.yml verifica a sintaxe do JavaScript e a presença da configuração, ativos e seções principais do site.
