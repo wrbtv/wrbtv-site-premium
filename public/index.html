@@ -12,18 +12,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=20261019-home-fixed">
+<link rel="stylesheet" href="/styles.css?v=20261019-reference-home">
 <script defer src="/app.js?v=20261019-home-fixed"></script>
 <title>WRB-TV | Todo o entretenimento em um só lugar</title>
 </head>
 <body>
 <header class="header" id="topo">
   <nav class="nav wrap" aria-label="Navegação principal">
-    <a class="brand" href="#inicio" aria-label="WRB-TV, início"><img src="/assets/wrbtv-logo-official.webp" alt="WRB-TV"><span class="brand-divider"></span><span class="brand-tagline">ENTRETENIMENTO<br><b>SEM LIMITES</b></span></a>
+    <a class="brand" href="#inicio" aria-label="WRB-TV, início"><img src="/assets/wrbtv-logo-official.webp" alt="WRB-TV"></a>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Abrir menu"><span></span><span></span></button>
     <div class="nav-links" id="navLinks">
+      <a class="nav-home" href="#inicio">Início</a>
       <a href="#experiencia">Experiência</a><a href="#dispositivos">Dispositivos</a><a href="#planos">Planos</a><a href="#revenda">Revenda</a><a href="#faq">Dúvidas</a>
-      <button class="button button-primary nav-cta" data-open-modal="trial">Solicitar teste <span aria-hidden="true">↗</span></button>
+      <button class="button button-primary nav-cta" data-open-modal="trial"><span class="whatsapp-mark" aria-hidden="true">◉</span> Solicitar teste gratuito <span aria-hidden="true">↗</span></button>
     </div>
   </nav>
 </header>
@@ -35,81 +36,76 @@
   </div>
   <div class="wrap hero-layout">
     <div class="hero-copy reveal">
-      <div class="eyebrow"><span class="status-dot"></span> FILMES · SÉRIES · CANAIS · ESPORTES · INFANTIL · 18+</div>
+      <div class="eyebrow">FILMES • SÉRIES • CANAIS AO VIVO • ESPORTES • INFANTIL • ADULTO</div>
       <h1>Todo o<br><span class="gradient-text">entretenimento</span><br>em um só lugar.</h1>
-      <p class="hero-desc">Milhares de canais, filmes, séries, os principais streamings, esportes, conteúdo infantil e adulto 18+ reunidos em um único aplicativo. <strong>Mais opções. Uma experiência. Sua escolha.</strong></p>
+      <p class="hero-desc">Milhares de canais, filmes, séries e os principais streamings reunidos em um único aplicativo. Simples, completo e fácil de usar.</p>
       <div class="category-icons" aria-label="Categorias de conteúdo">
-        <div class="category-icon-item"><span class="category-icon icon-live">▣</span><b>Canais<br>ao vivo</b></div>
-        <div class="category-icon-item"><span class="category-icon icon-films">▶</span><b>Filmes e<br>séries</b></div>
-        <div class="category-icon-item"><span class="category-icon icon-sports">◉</span><b>Esportes<br>ao vivo</b></div>
-        <div class="category-icon-item"><span class="category-icon icon-kids">✦</span><b>Infantil<br>para a família</b></div>
-        <div class="category-icon-item"><span class="category-icon icon-adult">18+</span><b>Conteúdo<br>adulto</b></div>
+        <div class="category-icon-item"><span class="category-icon icon-live" aria-hidden="true">▣</span><b>Canais<br>ao vivo</b></div>
+        <div class="category-icon-item"><span class="category-icon icon-films" aria-hidden="true">●</span><b>Filmes e<br>Séries</b></div>
+        <div class="category-icon-item"><span class="category-icon icon-sports" aria-hidden="true">⚽</span><b>Esportes<br>ao vivo</b></div>
+        <div class="category-icon-item"><span class="category-icon icon-kids" aria-hidden="true">☻</span><b>Infantil<br>completo</b></div>
+        <div class="category-icon-item"><span class="category-icon icon-adult" aria-hidden="true">♙</span><b>Conteúdo<br>Adulto 18+</b></div>
       </div>
       <div class="hero-actions">
-        <button class="button button-primary button-large" data-open-modal="trial"><span class="whatsapp-mark">◉</span> Quero meu teste gratuito <span aria-hidden="true">↗</span></button>
-        <a class="button button-glass button-large" href="#planos">Ver planos <span aria-hidden="true">↘</span></a>
+        <button class="button button-primary button-large" data-open-modal="trial"><span class="whatsapp-mark" aria-hidden="true">◉</span> Quero meu teste gratuito <span aria-hidden="true">↗</span></button>
+        <a class="button button-glass button-large" href="#planos">Ver planos <span aria-hidden="true">⊙</span></a>
       </div>
-      <div class="hero-benefits"><span><i>✓</i> Solicitação simples</span><span><i>✓</i> Atendimento especializado</span><span><i>✓</i> Várias telas compatíveis</span></div>
+      <div class="hero-benefits"><span><i>✓</i> Ativação rápida</span><span><i>✓</i> Suporte especializado</span><span><i>✓</i> Qualidade HD e 4K</span></div>
     </div>
 
-    <div class="hero-showcase reveal">
-      <div class="showcase-topline"><span><i class="status-dot"></i> CONHEÇA A EXPERIÊNCIA WRB-TV</span><span class="showcase-count"><b id="slideCount">01</b> / 03</span></div>
+    <div class="hero-showcase reveal" aria-label="Prévia do entretenimento WRB-TV">
       <div class="streaming-interface">
-        <div class="streaming-topbar"><span class="streaming-logo">WRB<span>•</span>TV</span><span class="screen-tag">TUDO EM UM SÓ APP</span><span class="screen-avatar">W</span></div>
         <div class="category-poster-row" id="categoryPosterRow" aria-label="Categorias de entretenimento">
           <article class="category-poster category-poster-live">
-            <img src="/assets/hero-sports.webp" alt="Estádio iluminado representando esportes e canais ao vivo" loading="eager">
-            <div class="category-poster-shade"></div><span class="category-index">01 / AO VIVO</span>
-            <div class="category-poster-title"><small>EM TEMPO REAL</small><h2>Canais<br>e esportes</h2><span class="live-badge"><i></i> AO VIVO</span></div>
+            <img src="/assets/hero-sports.webp" alt="Esportes ao vivo" loading="eager">
+            <div class="category-poster-shade"></div>
+            <div class="category-poster-title"><h2>ESPORTES<br>AO VIVO</h2><span class="live-badge"><i></i> AO VIVO</span></div>
           </article>
           <article class="category-poster category-poster-films">
-            <img src="/assets/hero-films.webp" alt="Aventura cinematográfica e filmes" loading="eager">
-            <div class="category-poster-shade"></div><span class="category-index">02 / CINEMA</span>
-            <div class="category-poster-title"><small>NOITE DE CINEMA</small><h2>Filmes</h2><span class="category-caption">Ação · Aventura · Drama</span></div>
+            <img src="/assets/hero-films.webp" alt="Filmes e lançamentos" loading="eager">
+            <div class="category-poster-shade"></div>
+            <div class="category-poster-title"><h2>FILMES<br>LANÇAMENTOS</h2></div>
           </article>
           <article class="category-poster category-poster-series">
-            <img src="/assets/hero-world.webp" alt="Universo de ficção científica para séries e maratonas" loading="eager">
-            <div class="category-poster-shade"></div><span class="category-index">03 / MARATONA</span>
-            <div class="category-poster-title"><small>HISTÓRIAS QUE PRENDEM</small><h2>Séries</h2><span class="category-caption">Descubra sua próxima história</span></div>
+            <img src="/assets/series.webp" alt="Séries completas" loading="eager">
+            <div class="category-poster-shade"></div>
+            <div class="category-poster-title"><h2>SÉRIES<br>COMPLETAS</h2></div>
           </article>
           <article class="category-poster category-poster-kids">
             <div class="category-art-kids" aria-hidden="true"><span class="kid-planet"></span><span class="kid-star star-a">✦</span><span class="kid-star star-b">✧</span><span class="kid-moon">☾</span><span class="kid-character">✦</span></div>
-            <div class="category-poster-shade"></div><span class="category-index">04 / PARA A FAMÍLIA</span>
-            <div class="category-poster-title"><small>IMAGINAÇÃO SEM FIM</small><h2>Infantil</h2><span class="category-caption">Diversão para os pequenos</span></div>
+            <div class="category-poster-shade"></div>
+            <div class="category-poster-title"><h2>INFANTIL</h2><span class="category-caption">PARA TODA A FAMÍLIA</span></div>
           </article>
           <article class="category-poster category-poster-adult">
-            <div class="category-art-adult" aria-hidden="true"><span class="adult-glow-orb"></span><span class="adult-lock">18+</span></div>
-            <div class="category-poster-shade"></div><span class="category-index">05 / ACESSO RESTRITO</span>
-            <div class="category-poster-title"><small>ÁREA ADULTA</small><h2>Conteúdo<br>18+</h2><span class="category-caption">Categoria exclusiva para adultos</span></div>
+            <div class="category-art-adult" aria-hidden="true"><span class="adult-glow-orb"></span><span class="adult-lock">♙</span></div>
+            <div class="category-poster-shade"></div>
+            <div class="category-poster-title"><h2>ADULTO</h2><span class="category-caption">CONTEÚDO 18+</span></div>
           </article>
         </div>
-        <div class="streaming-brands" aria-label="Variedade de plataformas e canais">
+        <div class="streaming-brands" aria-label="Plataformas de entretenimento">
           <span class="brand-netflix">NETFLIX</span><span class="brand-disney">Disney<span>+</span></span><span class="brand-prime">prime video</span><span class="brand-max">max</span><span class="brand-globo">globoplay</span><span class="brand-youtube">▶ YouTube</span><span class="brand-paramount">Paramount+</span><span class="brand-espn">ESPN</span>
         </div>
-        <div class="shelf-heading"><span>RECOMENDADOS PARA VOCÊ</span><span class="shelf-subtitle">Um pouco de tudo para escolher</span></div>
-        <div class="poster-grid" id="posterGrid" aria-label="Categorias e recomendações">
-          <article class="poster poster-films"><img src="/assets/movies.webp" alt="" loading="lazy"><span class="poster-label">FILMES</span><b>Ação e aventura</b></article>
-          <article class="poster poster-series"><img src="/assets/series.webp" alt="" loading="lazy"><span class="poster-label">SÉRIES</span><b>Novas histórias</b></article>
-          <article class="poster poster-sports"><img src="/assets/hero-sports.webp" alt="" loading="lazy"><span class="poster-label">ESPORTES</span><b>Emoção ao vivo</b></article>
-          <article class="poster poster-films"><img src="/assets/live-tv.webp" alt="" loading="lazy"><span class="poster-label">CANAIS</span><b>Notícias e variedades</b></article>
-          <article class="poster poster-kids"><div class="kids-art" aria-hidden="true"><span>✦</span><i>☾</i><b>★</b></div><span class="poster-label">INFANTIL</span><b>Para a família</b></article>
-          <article class="poster poster-adult"><div class="adult-art" aria-hidden="true"><span>18+</span><i></i></div><span class="poster-label">CONTEÚDO 18+</span><b>Área adulta</b></article>
+        <div class="shelf-heading"><span>Recomendados para você</span></div>
+        <div class="poster-grid" id="posterGrid" aria-label="Filmes e séries recomendados">
+          <article class="poster poster-films"><img src="/assets/movies.webp" alt="Oppenheimer" loading="eager"><b>Oppenheimer</b></article>
+          <article class="poster poster-series"><img src="/assets/series.webp" alt="The Last of Us" loading="eager"><b>The Last of Us</b></article>
+          <article class="poster poster-kids"><img src="/assets/hero-stage.webp" alt="Super Mario Bros" loading="eager"><b>Super Mario Bros</b></article>
+          <article class="poster poster-films"><img src="/assets/hero-films.webp" alt="John Wick 4" loading="eager"><b>John Wick 4</b></article>
+          <article class="poster poster-series"><img src="/assets/hero-world.webp" alt="A Pequena Sereia" loading="eager"><b>A Pequena Sereia</b></article>
+          <article class="poster poster-sports"><img src="/assets/hero-sports.webp" alt="Velozes e Furiosos 10" loading="eager"><b>Velozes e Furiosos 10</b></article>
         </div>
-        <div class="streaming-foot"><span class="foot-equalizer"><i></i><i></i><i></i><i></i><i></i></span><span>ENTRETENIMENTO SEM LIMITES</span><span>● ONLINE</span></div>
       </div>
-      <div class="floating-tag tag-variety"><span>✦</span><b>Variedade em um só app</b></div>
-      <div class="floating-tag tag-sport"><span>◉</span><b>Canais e esportes</b></div>
     </div>
   </div>
   <div class="wrap device-strip" id="dispositivos">
-    <div class="device-strip-title"><b>Seu entretenimento<br>em suas telas favoritas</b><span>Uma experiência conectada à sua rotina.</span></div>
-    <div class="device-short"><span class="device-symbol symbol-tv">▣</span><b>Smart TV</b><small>Samsung · LG e mais</small></div>
-    <div class="device-short"><span class="device-symbol symbol-android">◈</span><b>Android</b><small>Celular · TV Box</small></div>
-    <div class="device-short"><span class="device-symbol symbol-apple">●</span><b>iPhone / iPad</b><small>Dispositivos Apple</small></div>
-    <div class="device-short"><span class="device-symbol symbol-windows">⊞</span><b>Windows</b><small>PC e notebook</small></div>
-    <div class="device-short"><span class="device-symbol symbol-mac">▣</span><b>Mac</b><small>Computadores Apple</small></div>
-    <div class="device-short"><span class="device-symbol symbol-fire">◢</span><b>Fire TV Stick</b><small>Consulte compatibilidade</small></div>
-    <div class="device-short"><span class="device-symbol symbol-roku">R</span><b>Roku</b><small>Consulte compatibilidade</small></div>
+    <div class="device-strip-title"><b>Assista no seu<br>dispositivo favorito</b></div>
+    <div class="device-short"><span class="device-symbol symbol-tv" aria-hidden="true">▣</span><b>Smart TV</b><small>Samsung | LG | Android TV</small></div>
+    <div class="device-short"><span class="device-symbol symbol-android" aria-hidden="true">♟</span><b>Android</b><small>Celulares e TV Box</small></div>
+    <div class="device-short"><span class="device-symbol symbol-apple" aria-hidden="true">●</span><b>iPhone / iPad</b></div>
+    <div class="device-short"><span class="device-symbol symbol-windows" aria-hidden="true">⊞</span><b>Windows</b></div>
+    <div class="device-short"><span class="device-symbol symbol-mac" aria-hidden="true">▣</span><b>MacOS</b></div>
+    <div class="device-short"><span class="device-symbol symbol-fire" aria-hidden="true">amazon <small>fire tv</small></span><b>Fire TV Stick</b></div>
+    <div class="device-short"><span class="device-symbol symbol-roku" aria-hidden="true">Roku</span><b>Roku</b></div>
   </div>
 </section>
 
