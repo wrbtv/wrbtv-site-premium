@@ -148,7 +148,7 @@ function enhanceHtml(html, asset) {
   const shareImage = "https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019c";
 
   // Remove stale Open Graph/Twitter tags from bundled HTML so the intended image is authoritative.
-  html = html.replace(/<meta\\b[^>]*>/gi, function (tag) {
+  html = html.replace(/<meta\b[^>]*>/gi, function (tag) {
     const lower = tag.toLowerCase();
     const isOg = lower.includes('property="og:') || lower.includes("property='og:");
     const isTwitter = lower.includes('name="twitter:') || lower.includes("name='twitter:");
