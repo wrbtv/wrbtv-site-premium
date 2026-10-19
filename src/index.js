@@ -30,7 +30,7 @@ const MOBILE_PREMIUM_CSS = `.mobile-menu-toggle { display:none !important; }\n@m
   .mobile-brand img { display:block; width:clamp(104px,30vw,150px) !important; height:auto !important; max-height:118px !important; object-fit:contain; filter:drop-shadow(0 8px 20px rgba(0,166,255,.24)); }
   .mobile-brand .eyebrow { display:inline-flex; justify-content:center; margin-top:7px; color:#32e4ff; text-align:center; letter-spacing:.16em; font-size:clamp(.64rem,2.5vw,.8rem); line-height:1.4; }
   .mobile-catalog { margin:12px 0 20px !important; padding:11px 13px !important; text-align:center; line-height:1.45; font-size:clamp(.65rem,2.6vw,.82rem); color:#e1edff; background:rgba(5,16,34,.58) !important; border:1px solid rgba(70,147,208,.42) !important; border-radius:999px !important; backdrop-filter:blur(4px); }
-  .mobile-home-hero h1 { max-width:17ch; margin:12px 0 14px !important; padding:0 !important; text-align:left; font-size:clamp(2.1rem,7.8vw,3.1rem) !important; line-height:1.04 !important; letter-spacing:-.045em !important; text-wrap:balance; color:#fff !important; text-shadow:0 2px 5px rgba(0,0,0,.98),0 0 18px rgba(0,0,0,.78); -webkit-text-stroke:.25px rgba(0,0,0,.2); background:transparent !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+  .mobile-home-hero h1 { max-width:17ch; margin:12px 0 14px !important; padding:0 !important; text-align:left; font-size:clamp(2.1rem,7.8vw,3.1rem) !important; line-height:1.04 !important; letter-spacing:-.045em !important; text-wrap:balance; color:#fff !important; text-shadow:0 1px 3px rgba(0,0,0,.78),0 0 10px rgba(0,0,0,.38); -webkit-text-stroke:.15px rgba(0,0,0,.12); background:transparent !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }\n  .mobile-home-hero h1 .gradient,.section-head .gradient { text-shadow:none !important; -webkit-text-stroke:0 transparent !important; filter:brightness(1.22) saturate(1.12); }
   .mobile-home-copy { max-width:42rem; margin:0 !important; padding:0 !important; color:#f4f7ff !important; font-size:clamp(1rem,3.8vw,1.18rem) !important; line-height:1.62 !important; text-shadow:0 2px 4px rgba(0,0,0,.98),0 0 14px rgba(0,0,0,.8); background:transparent !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
   .mobile-home-copy::after { content:none !important; display:none !important; }
   .mobile-hero-actions { display:grid !important; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr) !important; gap:10px !important; margin-top:22px !important; }
@@ -180,8 +180,8 @@ function enhanceHtml(html, asset) {
     html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
   }
 
-  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v5")) {
-    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v5">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
+  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v6")) {
+    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v6">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
     const mobileHeadClose = html.toLowerCase().lastIndexOf("</head>");
     if (mobileHeadClose >= 0) {
       html = html.slice(0, mobileHeadClose) + mobileStyleBlock + NL + html.slice(mobileHeadClose);
