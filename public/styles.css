@@ -284,3 +284,6 @@ main{padding-top:0}
  .category-poster{height:clamp(155px,27vh,195px)}.streaming-brands{margin:7px 0 10px}.streaming-brands>span{min-height:35px}.poster-grid .poster{height:60px}
  .device-strip{bottom:12px;min-height:82px}.device-short{height:58px}.device-symbol{font-size:22px}.device-strip-title>b{font-size:14px}
 }
+
+.hero-backdrop:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 36% 29%,rgba(255,19,44,.25),transparent 22%),radial-gradient(ellipse at 63% 11%,rgba(0,93,255,.30),transparent 30%),radial-gradient(ellipse at 94% 16%,rgba(40,60,255,.30),transparent 28%),linear-gradient(0deg,rgba(255,10,32,.13),transparent 23%);mix-blend-mode:screen;opacity:.84}
+@media(max-width:780px){.hero-backdrop:after{opacity:.52}}
