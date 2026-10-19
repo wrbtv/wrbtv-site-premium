@@ -145,7 +145,7 @@ function enhanceHtml(html, asset) {
   const description = isReseller
     ? "Conheça o programa de revendedores WRB-TV e saiba como fazer parte."
     : "Canais ao vivo, filmes, séries, esportes e entretenimento em vários dispositivos. Acesse a WRB-TV e solicite seu teste gratuito.";
-  const shareImage = "https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019c";
+  const shareImage = "https://wrbtv.com.br/assets/home-reference.png?social=20261019d";
 
   // Remove stale Open Graph/Twitter tags from bundled HTML so the intended image is authoritative.
   html = html.replace(/<meta\b[^>]*>/gi, function (tag) {
@@ -166,6 +166,7 @@ function enhanceHtml(html, asset) {
     '<meta property="og:description" content="' + description + '">',
     '<meta property="og:image" content="' + shareImage + '">',
     '<meta property="og:image:secure_url" content="' + shareImage + '">',
+    '<meta property="og:image:alt" content="WRB-TV: entretenimento premium, canais ao vivo, filmes e séries">',
     '<meta property="og:image:type" content="image/png">',
     '<meta property="og:image:width" content="1672">',
     '<meta property="og:image:height" content="941">',
