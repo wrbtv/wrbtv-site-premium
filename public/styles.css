@@ -287,3 +287,12 @@ main{padding-top:0}
 
 .hero-backdrop:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 36% 29%,rgba(255,19,44,.25),transparent 22%),radial-gradient(ellipse at 63% 11%,rgba(0,93,255,.30),transparent 30%),radial-gradient(ellipse at 94% 16%,rgba(40,60,255,.30),transparent 28%),linear-gradient(0deg,rgba(255,10,32,.13),transparent 23%);mix-blend-mode:screen;opacity:.84}
 @media(max-width:780px){.hero-backdrop:after{opacity:.52}}
+
+/* Inline icon geometry */
+.category-icon svg{display:block;width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.device-symbol svg{display:block;width:31px;height:31px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.symbol-apple svg{fill:currentColor;stroke:none}
+.whatsapp-mark svg{display:block;width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+.device-word{font-family:Arial,sans-serif;font-size:10px!important;font-weight:800;letter-spacing:-.05em;white-space:nowrap}
+.device-word small{font-size:8px;color:#ff9c39!important}
+@media(max-width:780px){.category-icon svg{width:24px;height:24px}.device-symbol svg{width:24px;height:24px}}
