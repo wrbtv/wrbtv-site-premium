@@ -1,4 +1,5 @@
 const RELEASE_BASE = "https://github.com/wrbtv/wrbtv-site-premium/releases/download/wrbtv-site-premium/";
+const NL = String.fromCharCode(10);
 const ALLOWED_FILES = new Set([
   "index.html",
   "revendedor.html",
@@ -165,7 +166,7 @@ function resolveAsset(pathname) {
 
   if (decoded.startsWith("/assets/")) {
     const name = decoded.slice("/assets/".length);
-    if (!name || name.includes("/") || name.includes("\\\\") || name === "." || name === "..") {
+    if (!name || name.includes("/") || name.includes(String.fromCharCode(92)) || name === "." || name === "..") {
       return null;
     }
     return ALLOWED_FILES.has(name) && name.endsWith(".png") ? name : null;
@@ -205,12 +206,17 @@ function enhanceHtml(html, asset) {
       '<meta name="twitter:title" content="' + title + '">',
       '<meta name="twitter:description" content="' + description + '">',
       '<meta name="twitter:image" content="https://wrbtv.com.br/assets/home-reference.png">'
-    ].join("\\n");
-    html = html.replace(/<\\/head>/i, metadata + "\\n</head>");
+    ].join(NL);
+    const headClose = html.toLowerCase().lastIndexOf("</head>");
+    if (headClose >= 0) html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
   }
 
   if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v1")) {
-    html = html.replace(/<\\/style>/i, "\\n/* wrbtv-mobile-premium-v1 */\\n" + MOBILE_PREMIUM_CSS + "\\n</style>");
+    const styleClose = html.toLowerCase().indexOf("</style>");
+    if (styleClose >= 0) {
+      const mobileStyles = NL + "/* wrbtv-mobile-premium-v1 */" + NL + MOBILE_PREMIUM_CSS + NL;
+      html = html.slice(0, styleClose) + mobileStyles + html.slice(styleClose);
+    }
   }
   return html;
 }
