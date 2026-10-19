@@ -300,3 +300,12 @@ main{padding-top:0}
 .adult-lock svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 @media(min-width:781px){.hero-showcase{margin-top:-20px}}
 @media(min-width:781px) and (max-height:740px){.hero-showcase{margin-top:-7px}}
+
+/* Full-bleed cinematic room background; the screen itself is rendered as page UI. */
+.hero-backdrop-image{background-image:url("https://images.unsplash.com/photo-1756729924301-4e55f111e986?auto=format&fit=crop&fm=jpg&q=75&w=2200"),url("/assets/hero-cinema.webp");background-position:center 55%;background-size:cover;transform:scaleX(-1);opacity:.68;filter:saturate(1.1) contrast(1.04)}
+.category-poster-live>img{object-position:center 25%}
+.category-poster-films>img{object-position:center 20%}
+.category-poster-series>img{object-position:center 25%}
+.category-poster-kids>img{object-position:center 24%}
+.category-poster-adult>img{object-position:center 25%}
+@media(max-width:780px){.hero-backdrop-image{background-position:center 48%;opacity:.44}}
