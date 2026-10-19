@@ -147,7 +147,7 @@ function enhanceHtml(html, asset, requestUrl) {
   const description = isReseller
     ? "Conheça o programa de revendedores WRB-TV e saiba como fazer parte."
     : "Canais ao vivo, filmes, séries, esportes e entretenimento em vários dispositivos. Acesse a WRB-TV e solicite seu teste gratuito.";
-  const shareImage = "https://wrbtv.com.br/og-preview-v3.jpg";
+  const shareImage = "https://wrbtv.com.br/assets/wrbtv-social-preview.jpg?rev=20261019e";
   const requestHost = requestUrl && new URL(requestUrl).hostname === "www.wrbtv.com.br" ? "www.wrbtv.com.br" : "wrbtv.com.br";
   const shareUrl = "https://" + requestHost + (isReseller ? "/revendedor.html" : "/");
 
@@ -166,7 +166,7 @@ function enhanceHtml(html, asset, requestUrl) {
     '<meta property="og:locale" content="pt_BR">',
     '<meta property="og:type" content="website">',
     '<meta property="og:site_name" content="WRB-TV">',
-    '<meta property="og:url" content="' + shareUrl + '">',
+    '<meta property="og:url" content="' + canonical + '">',
     '<meta property="og:title" content="' + title + '">',
     '<meta property="og:description" content="' + description + '">',
     '<meta property="og:image" content="' + shareImage + '">',
@@ -222,6 +222,11 @@ export default {
     }
 
     const url = new URL(request.url);
+    if (url.hostname === "www.wrbtv.com.br") {
+      const canonicalUrl = new URL(url.toString());
+      canonicalUrl.hostname = "wrbtv.com.br";
+      return Response.redirect(canonicalUrl.toString(), 301);
+    }
     const asset = resolveAsset(url.pathname);
     if (!asset) {
       return new Response("Página não encontrada", {
@@ -277,7 +282,7 @@ export default {
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "strict-origin-when-cross-origin",
         "Cache-Control": asset.endsWith(".html")
-          ? "public, max-age=0, s-maxage=120, must-revalidate"
+          ? "public, max-age=0, s-maxage=0, must-revalidate"
           : "public, max-age=86400, s-maxage=86400"
       });
       return new Response(responseBody, { status: 200, headers });
