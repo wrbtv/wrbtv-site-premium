@@ -20,7 +20,7 @@ const MOBILE_PREMIUM_CSS = `.mobile-menu-toggle { display:none !important; }\n@m
   body { min-height:100vh; padding-top:76px !important; position:relative; isolation:isolate; background:transparent !important; overflow-x:clip !important; }
   body::before {
     content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background-image:linear-gradient(180deg,rgba(2,7,19,.60) 0%,rgba(2,7,19,.66) 36%,rgba(2,7,19,.76) 72%,rgba(2,7,19,.86) 100%),url("/assets/home-reference.png");
+    background-image:linear-gradient(180deg,rgba(2,7,19,1) 0px,rgba(2,7,19,1) 66px,rgba(2,7,19,.97) 100px,rgba(2,7,19,.84) 154px,rgba(2,7,19,.70) 230px,rgba(2,7,19,.66) 36%,rgba(2,7,19,.76) 72%,rgba(2,7,19,.88) 100%),url("/assets/home-reference.png");
     background-size:cover,auto 100vh; background-position:center,66% center; background-repeat:no-repeat,no-repeat; background-attachment:fixed,fixed; background-color:#030713;
   }
   .hero { display:block !important; width:100% !important; height:auto !important; overflow:visible !important; line-height:normal !important; background:transparent !important; }
