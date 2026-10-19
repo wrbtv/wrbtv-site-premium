@@ -227,3 +227,9 @@
   .hero h1{font-size:39px}
   .poster-grid .poster{height:69px}
 }
+
+@media(max-width:780px){
+  /* No horizontal carousel on mobile either: show every category as a normal grid. */
+  .category-poster-row{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;scroll-snap-type:none;padding-bottom:0}
+  .category-poster{height:210px;scroll-snap-align:none}
+}
