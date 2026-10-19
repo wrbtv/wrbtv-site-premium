@@ -24,6 +24,9 @@ jobs:
       - name: Verify static site files and conversion sections
         shell: bash
         run: |
+          test -s wrangler.toml
+          test -s src/index.js
+          grep -q 'directory = "./public"' wrangler.toml
           test -s public/index.html
           test -s public/styles.css
           test -s public/app.js
