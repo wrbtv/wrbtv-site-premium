@@ -127,6 +127,7 @@ function resolveAsset(pathname) {
     if (!name || name.includes("/") || name.includes(String.fromCharCode(92)) || name === "." || name === "..") {
       return null;
     }
+    if (name === "wrbtv-share.png") return "home-reference.png";
     return ALLOWED_FILES.has(name) && name.endsWith(".png") ? name : null;
   }
 
@@ -155,15 +156,15 @@ function enhanceHtml(html, asset) {
       '<meta property="og:url" content="' + canonical + '">',
       '<meta property="og:title" content="' + title + '">',
       '<meta property="og:description" content="' + description + '">',
-      '<meta property="og:image" content="https://wrbtv.com.br/assets/home-reference.png">',
-      '<meta property="og:image:secure_url" content="https://wrbtv.com.br/assets/home-reference.png">',
+      '<meta property="og:image" content="https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019b">',
+      '<meta property="og:image:secure_url" content="https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019b">',
       '<meta property="og:image:type" content="image/png">',
       '<meta property="og:image:width" content="1672">',
       '<meta property="og:image:height" content="941">',
       '<meta name="twitter:card" content="summary_large_image">',
       '<meta name="twitter:title" content="' + title + '">',
       '<meta name="twitter:description" content="' + description + '">',
-      '<meta name="twitter:image" content="https://wrbtv.com.br/assets/home-reference.png">'
+      '<meta name="twitter:image" content="https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019b">'
     ].join(NL);
     const headClose = html.toLowerCase().lastIndexOf("</head>");
     if (headClose >= 0) html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
