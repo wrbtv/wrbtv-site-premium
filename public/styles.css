@@ -296,3 +296,7 @@ main{padding-top:0}
 .device-word{font-family:Arial,sans-serif;font-size:10px!important;font-weight:800;letter-spacing:-.05em;white-space:nowrap}
 .device-word small{font-size:8px;color:#ff9c39!important}
 @media(max-width:780px){.category-icon svg{width:24px;height:24px}.device-symbol svg{width:24px;height:24px}}
+
+.adult-lock svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:781px){.hero-showcase{margin-top:-20px}}
+@media(min-width:781px) and (max-height:740px){.hero-showcase{margin-top:-7px}}
