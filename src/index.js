@@ -145,36 +145,46 @@ function enhanceHtml(html, asset) {
   const description = isReseller
     ? "Conheça o programa de revendedores WRB-TV e saiba como fazer parte."
     : "Canais ao vivo, filmes, séries, esportes e entretenimento em vários dispositivos. Acesse a WRB-TV e solicite seu teste gratuito.";
+  const shareImage = "https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019c";
 
-  if (!html.includes('property="og:image"')) {
-    const metadata = [
-      '<link rel="canonical" href="' + canonical + '">',
-      '<link rel="icon" type="image/png" href="https://wrbtv.com.br/assets/wrbtv-logo.png">',
-      '<link rel="apple-touch-icon" href="https://wrbtv.com.br/assets/wrbtv-logo.png">',
-      '<meta property="og:type" content="website">',
-      '<meta property="og:site_name" content="WRB-TV">',
-      '<meta property="og:url" content="' + canonical + '">',
-      '<meta property="og:title" content="' + title + '">',
-      '<meta property="og:description" content="' + description + '">',
-      '<meta property="og:image" content="https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019b">',
-      '<meta property="og:image:secure_url" content="https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019b">',
-      '<meta property="og:image:type" content="image/png">',
-      '<meta property="og:image:width" content="1672">',
-      '<meta property="og:image:height" content="941">',
-      '<meta name="twitter:card" content="summary_large_image">',
-      '<meta name="twitter:title" content="' + title + '">',
-      '<meta name="twitter:description" content="' + description + '">',
-      '<meta name="twitter:image" content="https://wrbtv.com.br/assets/wrbtv-share.png?rev=20261019b">'
-    ].join(NL);
-    const headClose = html.toLowerCase().lastIndexOf("</head>");
-    if (headClose >= 0) html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
+  // Remove stale Open Graph/Twitter tags from bundled HTML so the intended image is authoritative.
+  html = html.replace(/<meta\\b[^>]*>/gi, function (tag) {
+    const lower = tag.toLowerCase();
+    const isOg = lower.includes('property="og:') || lower.includes("property='og:");
+    const isTwitter = lower.includes('name="twitter:') || lower.includes("name='twitter:");
+    return isOg || isTwitter ? "" : tag;
+  });
+
+  const metadata = [
+    '<link rel="canonical" href="' + canonical + '">',
+    '<link rel="icon" type="image/png" href="https://wrbtv.com.br/assets/wrbtv-logo.png">',
+    '<link rel="apple-touch-icon" href="https://wrbtv.com.br/assets/wrbtv-logo.png">',
+    '<meta property="og:type" content="website">',
+    '<meta property="og:site_name" content="WRB-TV">',
+    '<meta property="og:url" content="' + canonical + '">',
+    '<meta property="og:title" content="' + title + '">',
+    '<meta property="og:description" content="' + description + '">',
+    '<meta property="og:image" content="' + shareImage + '">',
+    '<meta property="og:image:secure_url" content="' + shareImage + '">',
+    '<meta property="og:image:type" content="image/png">',
+    '<meta property="og:image:width" content="1672">',
+    '<meta property="og:image:height" content="941">',
+    '<meta name="twitter:card" content="summary_large_image">',
+    '<meta name="twitter:title" content="' + title + '">',
+    '<meta name="twitter:description" content="' + description + '">',
+    '<meta name="twitter:image" content="' + shareImage + '">'
+  ].join(NL);
+
+  const headClose = html.toLowerCase().lastIndexOf("</head>");
+  if (headClose >= 0) {
+    html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
   }
 
   if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v3")) {
     const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v3">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
-    const headClose = html.toLowerCase().lastIndexOf("</head>");
-    if (headClose >= 0) {
-      html = html.slice(0, headClose) + mobileStyleBlock + NL + html.slice(headClose);
+    const mobileHeadClose = html.toLowerCase().lastIndexOf("</head>");
+    if (mobileHeadClose >= 0) {
+      html = html.slice(0, mobileHeadClose) + mobileStyleBlock + NL + html.slice(mobileHeadClose);
     }
   }
   if (asset === "index.html" && !html.includes("wrbtv-mobile-menu-script-v1")) {
