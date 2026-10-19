@@ -30,8 +30,8 @@ const MOBILE_PREMIUM_CSS = `.mobile-menu-toggle { display:none !important; }\n@m
   .mobile-brand img { display:block; width:clamp(104px,30vw,150px) !important; height:auto !important; max-height:118px !important; object-fit:contain; filter:drop-shadow(0 8px 20px rgba(0,166,255,.24)); }
   .mobile-brand .eyebrow { display:inline-flex; justify-content:center; margin-top:7px; color:#32e4ff; text-align:center; letter-spacing:.16em; font-size:clamp(.64rem,2.5vw,.8rem); line-height:1.4; }
   .mobile-catalog { margin:12px 0 20px !important; padding:11px 13px !important; text-align:center; line-height:1.45; font-size:clamp(.65rem,2.6vw,.82rem); color:#e1edff; background:rgba(5,16,34,.58) !important; border:1px solid rgba(70,147,208,.42) !important; border-radius:999px !important; backdrop-filter:blur(4px); }
-  .mobile-home-hero h1 { max-width:17ch; margin:12px 0 14px !important; text-align:left; font-size:clamp(2.1rem,7.8vw,3.1rem) !important; line-height:1.04 !important; letter-spacing:-.045em !important; text-wrap:balance; text-shadow:0 2px 18px rgba(0,0,0,.22); }
-  .mobile-home-copy { max-width:42rem; margin:0 !important; color:#d1dced !important; font-size:clamp(1rem,3.8vw,1.18rem) !important; line-height:1.62 !important; text-shadow:0 2px 12px rgba(0,0,0,.55); }
+  .mobile-home-hero h1 { position:relative; max-width:17ch; margin:12px 0 14px !important; padding:13px 15px !important; text-align:left; font-size:clamp(2.1rem,7.8vw,3.1rem) !important; line-height:1.04 !important; letter-spacing:-.045em !important; text-wrap:balance; color:#fff !important; text-shadow:0 2px 3px rgba(0,0,0,.94),0 5px 18px rgba(0,0,0,.65); background:linear-gradient(120deg,rgba(2,8,20,.91),rgba(2,8,20,.78)) !important; border:1px solid rgba(73,153,224,.30); border-radius:16px; box-shadow:0 12px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.045); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+  .mobile-home-copy { position:relative; max-width:42rem; margin:0 !important; padding:13px 15px !important; color:#f0f5ff !important; font-size:clamp(1rem,3.8vw,1.18rem) !important; line-height:1.62 !important; text-shadow:0 2px 4px rgba(0,0,0,.96); background:linear-gradient(120deg,rgba(2,8,20,.88),rgba(2,8,20,.72)) !important; border:1px solid rgba(73,153,224,.22); border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.20); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); }
   .mobile-home-copy::after { content:none !important; display:none !important; }
   .mobile-hero-actions { display:grid !important; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr) !important; gap:10px !important; margin-top:22px !important; }
   .mobile-hero-actions .btn { min-width:0; min-height:50px; padding:12px 10px !important; border-radius:14px !important; font-size:clamp(.82rem,3vw,.98rem); line-height:1.25; white-space:normal; text-align:center; box-shadow:0 8px 22px rgba(0,50,170,.24); }
@@ -88,7 +88,7 @@ const MOBILE_PREMIUM_CSS = `.mobile-menu-toggle { display:none !important; }\n@m
   }
   main,main>section,.section { background:transparent !important; }
   .section { position:relative; padding:48px 0 !important; scroll-margin-top:84px !important; }
-  .section-head { padding-inline:2px; margin-bottom:26px !important; text-shadow:0 2px 16px rgba(0,0,0,.42); }
+  .section-head { padding:15px 14px !important; margin-bottom:22px !important; text-shadow:0 2px 4px rgba(0,0,0,.94); background:linear-gradient(120deg,rgba(2,8,20,.83),rgba(2,8,20,.66)) !important; border:1px solid rgba(73,153,224,.22); border-radius:15px; box-shadow:0 10px 24px rgba(0,0,0,.18); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); }
   .section-head .lead { color:#d0daec !important; }
   .feature-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:11px !important; }
   .feature { background:rgba(5,15,33,.76) !important; border-color:rgba(83,128,177,.36) !important; backdrop-filter:blur(7px); }
@@ -180,8 +180,8 @@ function enhanceHtml(html, asset) {
     html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
   }
 
-  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v3")) {
-    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v3">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
+  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v4")) {
+    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v4">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
     const mobileHeadClose = html.toLowerCase().lastIndexOf("</head>");
     if (mobileHeadClose >= 0) {
       html = html.slice(0, mobileHeadClose) + mobileStyleBlock + NL + html.slice(mobileHeadClose);
