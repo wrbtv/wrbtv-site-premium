@@ -29,96 +29,127 @@
   });
   $$('#navLinks a').forEach(link => link.addEventListener('click', closeMenu));
 
-  // Three-panel automatic carousel. It changes the background scene and the
-  // artwork inside the device interface, rather than merely animating captions.
-  const carouselData = [
-    {
-      src: '/assets/hero-world.webp',
-      alt: 'Uma experiência cinematográfica com mundos fantásticos e entretenimento visual',
-      kicker: 'SEU UNIVERSO DE ENTRETENIMENTO',
-      title: 'Muitas histórias.<br>Um só lugar.',
-      copy: 'Filmes, séries e descobertas para cada momento.'
-    },
-    {
-      src: '/assets/hero-films.webp',
-      alt: 'Uma sala de cinema futurista com uma paisagem cinematográfica de fantasia',
-      kicker: 'FILMES E SÉRIES',
-      title: 'Sua próxima<br>maratona começa aqui.',
-      copy: 'Escolha seu próximo filme ou encontre uma nova série.'
-    },
-    {
-      src: '/assets/hero-sports.webp',
-      alt: 'Estádio de futebol iluminado em uma noite de jogo',
-      kicker: 'ESPORTE E EMOÇÃO AO VIVO',
-      title: 'A emoção do jogo<br>em outro nível.',
-      copy: 'Descubra opções de entretenimento esportivo em um só lugar.'
-    }
-  ];
+  // Ambient cinematic background carousel.
   const bgSlides = $$('.hero-backdrop-slide');
-  const featured = $('#featuredContent');
-  const featuredImage = $('#featuredImage');
-  const featuredKicker = $('#featuredKicker');
-  const featuredTitle = $('#featuredTitle');
-  const featuredCopy = $('#featuredCopy');
-  const slideCount = $('#slideCount');
-  const dotButtons = $$('#carouselDots button');
-  let slideIndex = 0;
-  let carouselTimer = 0;
-  let carouselPaused = false;
+  const bgSources = ['/assets/hero-world.webp', '/assets/hero-films.webp', '/assets/hero-sports.webp'];
+  let sceneIndex = 0;
+  let sceneTimer = 0;
+  let scenePaused = false;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   bgSlides.forEach((slide, index) => {
-    const item = carouselData[index];
-    if (item) slide.style.backgroundImage = 'url("' + item.src + '")';
+    if (bgSources[index]) slide.style.backgroundImage = 'url("' + bgSources[index] + '")';
   });
+  function renderScene(index) {
+    sceneIndex = (index + bgSlides.length) % bgSlides.length;
+    bgSlides.forEach((slide, i) => slide.classList.toggle('is-active', i === sceneIndex));
+  }
+  function stopSceneCarousel() {
+    if (sceneTimer) window.clearInterval(sceneTimer);
+    sceneTimer = 0;
+  }
+  function startSceneCarousel() {
+    stopSceneCarousel();
+    if (!reduceMotion && !scenePaused && !document.hidden) {
+      sceneTimer = window.setInterval(() => renderScene(sceneIndex + 1), 7200);
+    }
+  }
+  renderScene(0);
+  startSceneCarousel();
 
-  function stopCarousel() {
-    if (carouselTimer) window.clearInterval(carouselTimer);
-    carouselTimer = 0;
+  // Real horizontal content carousel under the streaming-brand row.
+  const posterViewport = $('#posterCarousel');
+  const posterTrack = $('#posterTrack');
+  const posterPrev = $('#shelfPrev');
+  const posterNext = $('#shelfNext');
+  const progressBar = $('#shelfProgress');
+  let posterTimer = 0;
+  let posterPaused = false;
+  let movingPoster = false;
+  const posterDelay = 5200;
+
+  function posterStep() {
+    if (!posterTrack) return 0;
+    const first = posterTrack.firstElementChild;
+    if (!first) return 0;
+    const styles = window.getComputedStyle(posterTrack);
+    return first.getBoundingClientRect().width + (Number.parseFloat(styles.columnGap || styles.gap) || 0);
   }
-  function startCarousel() {
-    stopCarousel();
-    if (!reduceMotion && !carouselPaused && !document.hidden) {
-      carouselTimer = window.setInterval(() => renderSlide(slideIndex + 1), 6500);
+  function resetProgress() {
+    if (!progressBar) return;
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    void progressBar.offsetWidth;
+    if (!reduceMotion && !posterPaused && !document.hidden) {
+      progressBar.style.transition = 'width ' + posterDelay + 'ms linear';
+      progressBar.style.width = '100%';
     }
   }
-  function renderSlide(nextIndex, restartTimer = true) {
-    slideIndex = (nextIndex + carouselData.length) % carouselData.length;
-    const item = carouselData[slideIndex];
-    bgSlides.forEach((slide, index) => slide.classList.toggle('is-active', index === slideIndex));
-    if (featured && featuredImage) {
-      featured.classList.add('is-changing');
-      featuredImage.alt = item.alt;
-      featuredImage.src = item.src;
-      featuredImage.onload = () => featured.classList.remove('is-changing');
+  function movePoster(direction = 1) {
+    if (!posterTrack || movingPoster || posterTrack.children.length < 2) return;
+    movingPoster = true;
+    const step = posterStep();
+    posterTrack.style.transition = reduceMotion ? 'none' : 'transform 420ms cubic-bezier(.22,.68,0,1)';
+    if (direction > 0) {
+      posterTrack.style.transform = 'translate3d(' + (-step) + 'px,0,0)';
+      const finish = () => {
+        posterTrack.removeEventListener('transitionend', finish);
+        posterTrack.appendChild(posterTrack.firstElementChild);
+        posterTrack.style.transition = 'none';
+        posterTrack.style.transform = 'translate3d(0,0,0)';
+        void posterTrack.offsetWidth;
+        movingPoster = false;
+        resetProgress();
+      };
+      if (reduceMotion) finish();
+      else posterTrack.addEventListener('transitionend', finish, { once: true });
+    } else {
+      posterTrack.style.transition = 'none';
+      posterTrack.insertBefore(posterTrack.lastElementChild, posterTrack.firstElementChild);
+      posterTrack.style.transform = 'translate3d(' + (-step) + 'px,0,0)';
+      void posterTrack.offsetWidth;
+      posterTrack.style.transition = reduceMotion ? 'none' : 'transform 420ms cubic-bezier(.22,.68,0,1)';
+      posterTrack.style.transform = 'translate3d(0,0,0)';
+      const finish = () => {
+        posterTrack.removeEventListener('transitionend', finish);
+        movingPoster = false;
+        resetProgress();
+      };
+      if (reduceMotion) finish();
+      else posterTrack.addEventListener('transitionend', finish, { once: true });
     }
-    if (featuredKicker) featuredKicker.textContent = item.kicker;
-    if (featuredTitle) featuredTitle.innerHTML = item.title;
-    if (featuredCopy) featuredCopy.textContent = item.copy;
-    if (slideCount) slideCount.textContent = String(slideIndex + 1).padStart(2, '0');
-    dotButtons.forEach((button, index) => {
-      const active = index === slideIndex;
-      button.classList.toggle('is-active', active);
-      button.setAttribute('aria-pressed', String(active));
-    });
-    if (restartTimer) startCarousel();
   }
-  $('#slidePrev')?.addEventListener('click', () => renderSlide(slideIndex - 1));
-  $('#slideNext')?.addEventListener('click', () => renderSlide(slideIndex + 1));
-  dotButtons.forEach(button => button.addEventListener('click', () => renderSlide(Number(button.dataset.slide))));
-  const showcase = $('.hero-showcase');
-  showcase?.addEventListener('mouseenter', () => { carouselPaused = true; stopCarousel(); });
-  showcase?.addEventListener('mouseleave', () => { carouselPaused = false; startCarousel(); });
-  showcase?.addEventListener('focusin', () => { carouselPaused = true; stopCarousel(); });
-  showcase?.addEventListener('focusout', event => {
-    if (!showcase.contains(event.relatedTarget)) {
-      carouselPaused = false;
-      startCarousel();
+  function stopPosterCarousel() {
+    if (posterTimer) window.clearInterval(posterTimer);
+    posterTimer = 0;
+    if (progressBar) {
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '0%';
+    }
+  }
+  function startPosterCarousel() {
+    stopPosterCarousel();
+    if (!reduceMotion && !posterPaused && !document.hidden) {
+      resetProgress();
+      posterTimer = window.setInterval(() => movePoster(1), posterDelay);
+    }
+  }
+  posterPrev?.addEventListener('click', () => { movePoster(-1); startPosterCarousel(); });
+  posterNext?.addEventListener('click', () => { movePoster(1); startPosterCarousel(); });
+  posterViewport?.addEventListener('mouseenter', () => { posterPaused = true; stopPosterCarousel(); });
+  posterViewport?.addEventListener('mouseleave', () => { posterPaused = false; startPosterCarousel(); });
+  posterViewport?.addEventListener('focusin', () => { posterPaused = true; stopPosterCarousel(); });
+  posterViewport?.addEventListener('focusout', event => {
+    if (!posterViewport.contains(event.relatedTarget)) {
+      posterPaused = false;
+      startPosterCarousel();
     }
   });
-  document.addEventListener('visibilitychange', startCarousel);
-  renderSlide(0, false);
-  startCarousel();
+  document.addEventListener('visibilitychange', () => {
+    startSceneCarousel();
+    startPosterCarousel();
+  });
+  startPosterCarousel();
 
   // Reusable accessible modal management for trial/subscription and reseller.
   const requestModal = $('#requestModal');
