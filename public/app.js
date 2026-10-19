@@ -25,8 +25,12 @@
 
   function openWhatsApp(message) {
     const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
-    const opened = window.open(url, '_blank', 'noopener,noreferrer');
-    if (!opened) window.location.href = url;
+    const opened = window.open(url, '_blank');
+    if (opened) {
+      opened.opener = null;
+    } else {
+      window.location.href = url;
+    }
   }
 
   function openModal(mode, button) {
