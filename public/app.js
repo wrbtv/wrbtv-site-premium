@@ -136,11 +136,10 @@
   let selectedTier = { name: 'Bronze', rate: 9, min: 10, max: 49 };
 
   function updateEstimate() {
-    let credits = Number.parseInt(creditsInput.value, 10);
-    if (!Number.isFinite(credits) || credits < selectedTier.min) credits = selectedTier.min;
-    if (selectedTier.max && credits > selectedTier.max) credits = selectedTier.max;
-    $('#estimate').textContent = money(credits * selectedTier.rate);
-    return credits;
+    const credits = Number.parseInt(creditsInput.value, 10);
+    const safeCredits = Number.isFinite(credits) && credits > 0 ? credits : 0;
+    $('#estimate').textContent = money(safeCredits * selectedTier.rate);
+    return safeCredits;
   }
 
   function selectTier(button) {
