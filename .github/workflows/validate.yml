@@ -1,0 +1,38 @@
+name: Validate WRB-TV site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check JavaScript syntax
+        run: node --check public/app.js
+      - name: Verify static site files and conversion sections
+        shell: bash
+        run: |
+          test -s public/index.html
+          test -s public/styles.css
+          test -s public/app.js
+          test -s public/assets/wrbtv-logo.svg
+          test -s public/_headers
+          grep -q 'id="planos"' public/index.html
+          grep -q 'id="dispositivos"' public/index.html
+          grep -q 'id="requestModal"' public/index.html
+          grep -q 'id="resellerForm"' public/index.html
+          grep -q '5588996484494' public/app.js
+          grep -q 'R$ 30' public/index.html
+          grep -q 'R$ 35' public/index.html
