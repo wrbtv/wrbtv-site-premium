@@ -244,5 +244,25 @@
     ].join('\n'));
   });
   updateEstimate();
+
+  // Pretty paths served by Cloudflare Pages; keep each route inside this one-page site.
+  const prettyRoute = window.location.pathname.replace(/\/+$/, '') || '/';
+  const routeSections = {
+    '/planos': 'planos',
+    '/compatibilidade': 'dispositivos',
+    '/revendedores': 'revenda',
+    '/faq': 'faq'
+  };
+  if (prettyRoute === '/teste-gratis') {
+    window.addEventListener('load', () => openModal('trial'), { once: true });
+  } else if (routeSections[prettyRoute]) {
+    window.addEventListener('load', () => {
+      document.getElementById(routeSections[prettyRoute])?.scrollIntoView({
+        behavior: reducedMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
+    }, { once: true });
+  }
+
   $('#year').textContent = String(new Date().getFullYear());
 })();
