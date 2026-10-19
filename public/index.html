@@ -58,35 +58,48 @@
       <div class="showcase-topline"><span><i class="status-dot"></i> CONHEÇA A EXPERIÊNCIA WRB-TV</span><span class="showcase-count"><b id="slideCount">01</b> / 03</span></div>
       <div class="streaming-interface">
         <div class="streaming-topbar"><span class="streaming-logo">WRB<span>•</span>TV</span><span class="screen-tag">TUDO EM UM SÓ APP</span><span class="screen-avatar">W</span></div>
-        <div class="featured-content" id="featuredContent">
-          <img id="featuredImage" src="/assets/hero-world.webp" alt="Universo de entretenimento apresentado na WRB-TV">
-          <div class="featured-vignette"></div>
-          <div class="featured-content-copy">
-            <span class="featured-kicker" id="featuredKicker">SEU UNIVERSO DE ENTRETENIMENTO</span>
-            <h2 id="featuredTitle">Muitas histórias.<br>Um só lugar.</h2>
-            <p id="featuredCopy">Escolha o que combina com seu momento.</p>
-            <span class="featured-pill"><i></i> DESCUBRA NA WRB-TV</span>
-          </div>
-          <div class="carousel-controls">
-            <button type="button" class="carousel-arrow" id="slidePrev" aria-label="Destaque anterior">‹</button>
-            <div class="carousel-dots" id="carouselDots" aria-label="Escolher destaque">
-              <button type="button" class="is-active" data-slide="0" aria-label="Destaque 1" aria-pressed="true"></button>
-              <button type="button" data-slide="1" aria-label="Destaque 2" aria-pressed="false"></button>
-              <button type="button" data-slide="2" aria-label="Destaque 3" aria-pressed="false"></button>
-            </div>
-            <button type="button" class="carousel-arrow" id="slideNext" aria-label="Próximo destaque">›</button>
-          </div>
+        <div class="category-poster-row" id="categoryPosterRow" aria-label="Categorias de entretenimento">
+          <article class="category-poster category-poster-live">
+            <img src="/assets/hero-sports.webp" alt="Estádio iluminado representando esportes e canais ao vivo" loading="eager">
+            <div class="category-poster-shade"></div><span class="category-index">01 / AO VIVO</span>
+            <div class="category-poster-title"><small>EM TEMPO REAL</small><h2>Canais<br>e esportes</h2><span class="live-badge"><i></i> AO VIVO</span></div>
+          </article>
+          <article class="category-poster category-poster-films">
+            <img src="/assets/hero-films.webp" alt="Aventura cinematográfica e filmes" loading="eager">
+            <div class="category-poster-shade"></div><span class="category-index">02 / CINEMA</span>
+            <div class="category-poster-title"><small>NOITE DE CINEMA</small><h2>Filmes</h2><span class="category-caption">Ação · Aventura · Drama</span></div>
+          </article>
+          <article class="category-poster category-poster-series">
+            <img src="/assets/hero-world.webp" alt="Universo de ficção científica para séries e maratonas" loading="eager">
+            <div class="category-poster-shade"></div><span class="category-index">03 / MARATONA</span>
+            <div class="category-poster-title"><small>HISTÓRIAS QUE PRENDEM</small><h2>Séries</h2><span class="category-caption">Descubra sua próxima história</span></div>
+          </article>
+          <article class="category-poster category-poster-kids">
+            <div class="category-art-kids" aria-hidden="true"><span class="kid-planet"></span><span class="kid-star star-a">✦</span><span class="kid-star star-b">✧</span><span class="kid-moon">☾</span><span class="kid-character">✦</span></div>
+            <div class="category-poster-shade"></div><span class="category-index">04 / PARA A FAMÍLIA</span>
+            <div class="category-poster-title"><small>IMAGINAÇÃO SEM FIM</small><h2>Infantil</h2><span class="category-caption">Diversão para os pequenos</span></div>
+          </article>
+          <article class="category-poster category-poster-adult">
+            <div class="category-art-adult" aria-hidden="true"><span class="adult-glow-orb"></span><span class="adult-lock">18+</span></div>
+            <div class="category-poster-shade"></div><span class="category-index">05 / ACESSO RESTRITO</span>
+            <div class="category-poster-title"><small>ÁREA ADULTA</small><h2>Conteúdo<br>18+</h2><span class="category-caption">Categoria exclusiva para adultos</span></div>
+          </article>
         </div>
         <div class="streaming-brands" aria-label="Variedade de plataformas e canais">
           <span class="brand-netflix">NETFLIX</span><span class="brand-disney">Disney<span>+</span></span><span class="brand-prime">prime video</span><span class="brand-max">max</span><span class="brand-globo">globoplay</span><span class="brand-youtube">▶ YouTube</span><span class="brand-paramount">Paramount+</span><span class="brand-espn">ESPN</span>
         </div>
-        <div class="shelf-heading"><span>DESCUBRA SEU PRÓXIMO PLAY</span><a href="#experiencia">Explorar <b>↗</b></a></div>
-        <div class="poster-shelf">
-          <article class="poster poster-films"><img src="/assets/hero-films.webp" alt="" loading="lazy"><span class="poster-label">FILMES</span><b>Noite de cinema</b></article>
-          <article class="poster poster-series"><img src="/assets/hero-world.webp" alt="" loading="lazy"><span class="poster-label">SÉRIES</span><b>Novas histórias</b></article>
-          <article class="poster poster-sports"><img src="/assets/hero-sports.webp" alt="" loading="lazy"><span class="poster-label">ESPORTES</span><b>Ao vivo</b></article>
-          <article class="poster poster-kids"><div class="kids-art" aria-hidden="true"><span>✦</span><i>☾</i><b>★</b></div><span class="poster-label">INFANTIL</span><b>Imaginação sem fim</b></article>
-          <article class="poster poster-adult"><div class="adult-art" aria-hidden="true"><span>18+</span><i></i></div><span class="poster-label">CONTEÚDO 18+</span><b>Área para adultos</b></article>
+        <div class="shelf-heading"><span>RECOMENDADOS PARA VOCÊ</span><span class="shelf-subtitle">Uma amostra de cada universo</span><div class="shelf-controls"><button type="button" class="carousel-arrow shelf-prev" id="shelfPrev" aria-label="Recomendação anterior">‹</button><div class="shelf-progress"><i id="shelfProgress"></i></div><button type="button" class="carousel-arrow shelf-next" id="shelfNext" aria-label="Próxima recomendação">›</button></div></div>
+        <div class="poster-carousel" id="posterCarousel" aria-label="Carrossel automático de categorias">
+          <div class="poster-track" id="posterTrack">
+            <article class="poster poster-films"><img src="/assets/hero-films.webp" alt="" loading="lazy"><span class="poster-label">FILMES</span><b>Ação e aventura</b></article>
+            <article class="poster poster-series"><img src="/assets/hero-world.webp" alt="" loading="lazy"><span class="poster-label">SÉRIES</span><b>Ficção e fantasia</b></article>
+            <article class="poster poster-sports"><img src="/assets/hero-sports.webp" alt="" loading="lazy"><span class="poster-label">ESPORTES</span><b>Esporte ao vivo</b></article>
+            <article class="poster poster-kids"><div class="kids-art" aria-hidden="true"><span>✦</span><i>☾</i><b>★</b></div><span class="poster-label">INFANTIL</span><b>Para a família</b></article>
+            <article class="poster poster-adult"><div class="adult-art" aria-hidden="true"><span>18+</span><i></i></div><span class="poster-label">CONTEÚDO 18+</span><b>Área adulta</b></article>
+            <article class="poster poster-films poster-documentary"><img src="/assets/hero-cinema.webp" alt="" loading="lazy"><span class="poster-label">CANAIS</span><b>Variedades e notícias</b></article>
+            <article class="poster poster-series poster-premium"><img src="/assets/hero-stage.webp" alt="" loading="lazy"><span class="poster-label">ENTRETENIMENTO</span><b>Novas descobertas</b></article>
+            <article class="poster poster-sports"><img src="/assets/hero-sports.webp" alt="" loading="lazy"><span class="poster-label">AO VIVO</span><b>Não perca o momento</b></article>
+          </div>
         </div>
         <div class="streaming-foot"><span class="foot-equalizer"><i></i><i></i><i></i><i></i><i></i></span><span>ENTRETENIMENTO SEM LIMITES</span><span>● ONLINE</span></div>
       </div>
