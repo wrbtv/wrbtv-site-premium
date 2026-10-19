@@ -38,10 +38,54 @@ const MOBILE_PREMIUM_CSS = `@media (max-width:1020px) {
   .mobile-hero-actions .btn.secondary { color:#f5f8ff; background:rgba(10,22,42,.82) !important; border:1px solid rgba(102,143,194,.45) !important; box-shadow:none !important; }
   .mobile-perks { display:flex !important; flex-wrap:wrap; gap:8px !important; margin-top:17px !important; color:#d0def3 !important; font-size:.77rem !important; line-height:1.4; }
   .mobile-perks span { padding:6px 9px; border:1px solid rgba(102,143,194,.30); border-radius:999px; background:rgba(3,12,27,.54); white-space:normal !important; }
-  .mobile-nav { display:grid !important; position:fixed !important; inset:0 0 auto 0 !important; z-index:1000 !important; grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:5px !important; width:100% !important; padding:calc(5px + env(safe-area-inset-top)) 9px 7px !important; margin:0 !important; overflow:visible !important; background:rgba(2,8,19,.94) !important; border:0 !important; border-bottom:1px solid rgba(0,198,255,.24) !important; box-shadow:0 8px 22px rgba(0,0,0,.24); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); scrollbar-width:none !important; }
-  .mobile-nav::-webkit-scrollbar { display:none !important; }
-  .mobile-nav a { display:flex !important; align-items:center; justify-content:center; min-width:0; min-height:28px; padding:6px 4px !important; border:1px solid rgba(66,106,153,.48) !important; border-radius:9px !important; background:rgba(10,25,46,.88) !important; color:#f5f9ff !important; font-size:clamp(.68rem,2.8vw,.78rem) !important; font-weight:750; line-height:1.15; text-align:center; white-space:normal !important; overflow-wrap:anywhere; }
-  .mobile-nav a:active,.mobile-nav a:focus-visible { outline:none; border-color:#00d9ff !important; background:linear-gradient(110deg,#00bde8,#075bff) !important; }
+  .mobile-menu-toggle {
+    display:flex !important; position:fixed !important;
+    top:calc(10px + env(safe-area-inset-top)) !important; right:14px !important;
+    z-index:1003 !important; width:46px; height:46px; padding:0;
+    flex-direction:column; align-items:center; justify-content:center; gap:5px;
+    border:1px solid rgba(64,154,224,.55); border-radius:14px;
+    background:linear-gradient(145deg,rgba(13,33,58,.98),rgba(4,13,28,.98));
+    box-shadow:0 7px 24px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.06);
+    color:#f5f9ff; cursor:pointer; -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-menu-toggle span {
+    display:block; width:20px; height:2px; flex:0 0 2px;
+    border-radius:2px; background:#ecf8ff;
+    transition:transform .18s ease,opacity .18s ease;
+  }
+  .mobile-menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(7px) rotate(45deg); }
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+  .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu-toggle:focus-visible { outline:2px solid #13d7ff; outline-offset:3px; }
+  .mobile-nav {
+    display:none !important; position:fixed !important;
+    top:calc(64px + env(safe-area-inset-top)) !important; right:14px !important; left:auto !important;
+    z-index:1002 !important; grid-template-columns:minmax(0,1fr) !important;
+    gap:7px !important; width:min(290px,calc(100vw - 28px)) !important;
+    max-height:calc(100dvh - 92px) !important; overflow:auto !important;
+    padding:12px !important; margin:0 !important;
+    border:1px solid rgba(65,148,221,.4) !important; border-radius:18px !important;
+    background:linear-gradient(155deg,rgba(5,17,36,.985),rgba(2,8,20,.985)) !important;
+    box-shadow:0 22px 55px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.055);
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    scrollbar-width:thin;
+  }
+  .mobile-nav.mobile-nav-open { display:grid !important; }
+  .mobile-nav::-webkit-scrollbar { width:5px; }
+  .mobile-nav::-webkit-scrollbar-thumb { background:rgba(66,139,201,.48); border-radius:6px; }
+  .mobile-nav a {
+    display:flex !important; align-items:center; justify-content:flex-start;
+    min-width:0; min-height:44px; padding:12px 14px !important;
+    border:1px solid rgba(66,106,153,.4) !important; border-radius:11px !important;
+    background:linear-gradient(115deg,rgba(13,31,55,.96),rgba(6,17,35,.96)) !important;
+    color:#f5f9ff !important; font-size:.92rem !important; font-weight:750;
+    line-height:1.25; text-align:left; white-space:normal !important;
+    overflow-wrap:anywhere; transition:border-color .15s ease,background .15s ease;
+  }
+  .mobile-nav a:active,.mobile-nav a:focus-visible {
+    outline:none; border-color:#00d9ff !important;
+    background:linear-gradient(110deg,rgba(0,189,232,.28),rgba(7,91,255,.34)) !important;
+  }
   main,main>section,.section { background:transparent !important; }
   .section { position:relative; padding:48px 0 !important; scroll-margin-top:84px !important; }
   .section-head { padding-inline:2px; margin-bottom:26px !important; text-shadow:0 2px 16px rgba(0,0,0,.42); }
@@ -53,8 +97,6 @@ const MOBILE_PREMIUM_CSS = `@media (max-width:1020px) {
 }
 @media (min-width:640px) and (max-width:1020px) {
   body { padding-top:49px !important; }
-  .mobile-nav { grid-template-columns:repeat(6,minmax(0,1fr)) !important; gap:6px !important; padding:calc(6px + env(safe-area-inset-top)) 12px 7px !important; }
-  .mobile-nav a { min-height:31px; font-size:.78rem !important; }
   .mobile-home-hero { padding:28px max(24px,5vw) 35px !important; }
   .mobile-home-hero h1 { max-width:20ch; font-size:clamp(2.5rem,5.2vw,3.5rem) !important; }
   .mobile-hero-actions { grid-template-columns:minmax(0,310px) minmax(0,180px) !important; }
@@ -66,6 +108,8 @@ const MOBILE_PREMIUM_CSS = `@media (max-width:1020px) {
   .mobile-hero-actions { grid-template-columns:1fr !important; }
   .mobile-hero-actions .btn { min-height:48px; }
 }`;
+
+const MOBILE_MENU_SCRIPT = "(function () {\n  function initWrbtvMobileMenu() {\n    var menu = document.querySelector('.mobile-nav');\n    if (!menu || document.getElementById('wrbtv-mobile-menu-toggle')) return;\n    if (!menu.id) menu.id = 'wrbtv-mobile-menu';\n    var button = document.createElement('button');\n    button.id = 'wrbtv-mobile-menu-toggle';\n    button.className = 'mobile-menu-toggle';\n    button.type = 'button';\n    button.setAttribute('aria-label', 'Abrir menu');\n    button.setAttribute('aria-controls', menu.id);\n    button.setAttribute('aria-expanded', 'false');\n    button.innerHTML = '<span></span><span></span><span></span>';\n    document.body.appendChild(button);\n    function closeMenu() {\n      menu.classList.remove('mobile-nav-open');\n      button.setAttribute('aria-expanded', 'false');\n      button.setAttribute('aria-label', 'Abrir menu');\n    }\n    button.addEventListener('click', function (event) {\n      event.stopPropagation();\n      var isOpen = button.getAttribute('aria-expanded') === 'true';\n      if (isOpen) closeMenu();\n      else {\n        menu.classList.add('mobile-nav-open');\n        button.setAttribute('aria-expanded', 'true');\n        button.setAttribute('aria-label', 'Fechar menu');\n      }\n    });\n    menu.addEventListener('click', function (event) {\n      if (event.target && event.target.closest && event.target.closest('a')) closeMenu();\n    });\n    document.addEventListener('click', function (event) {\n      if (!menu.contains(event.target) && !button.contains(event.target)) closeMenu();\n    });\n    document.addEventListener('keydown', function (event) {\n      if (event.key === 'Escape') { closeMenu(); button.focus(); }\n    });\n    window.addEventListener('resize', function () {\n      if (window.innerWidth > 1020) closeMenu();\n    });\n  }\n  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initWrbtvMobileMenu, { once: true });\n  else initWrbtvMobileMenu();\n})();";
 
 function resolveAsset(pathname) {
   let decoded;
@@ -125,11 +169,18 @@ function enhanceHtml(html, asset) {
     if (headClose >= 0) html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
   }
 
-  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v2")) {
-    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v2">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
+  if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v3")) {
+    const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v3">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
     const headClose = html.toLowerCase().lastIndexOf("</head>");
     if (headClose >= 0) {
       html = html.slice(0, headClose) + mobileStyleBlock + NL + html.slice(headClose);
+    }
+  }
+  if (asset === "index.html" && !html.includes("wrbtv-mobile-menu-script-v1")) {
+    const menuScriptBlock = '<script id="wrbtv-mobile-menu-script-v1">' + MOBILE_MENU_SCRIPT + '</script>';
+    const bodyClose = html.toLowerCase().lastIndexOf("</body>");
+    if (bodyClose >= 0) {
+      html = html.slice(0, bodyClose) + menuScriptBlock + NL + html.slice(bodyClose);
     }
   }
   return html;
