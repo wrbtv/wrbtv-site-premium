@@ -248,6 +248,25 @@ function enhanceHtml(html, asset, requestUrl) {
     html = html.slice(0, headClose) + metadata + NL + html.slice(headClose);
   }
 
+  // Google Ads tag: aplicada a todas as páginas HTML servidas pelo Worker.
+  // Desktop e mobile usam o mesmo HTML responsivo. A checagem evita duplicação.
+  if (!html.includes("AW-18385692852")) {
+    const googleAdsTag = [
+      '<!-- Google tag (gtag.js) -->',
+      '<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18385692852"></script>',
+      '<script>',
+      '  window.dataLayer = window.dataLayer || [];',
+      '  function gtag(){dataLayer.push(arguments);}',
+      "  gtag('js', new Date());",
+      "  gtag('config', 'AW-18385692852');",
+      '</script>'
+    ].join(NL);
+    const googleTagHeadClose = html.toLowerCase().lastIndexOf("</head>");
+    if (googleTagHeadClose >= 0) {
+      html = html.slice(0, googleTagHeadClose) + googleAdsTag + NL + html.slice(googleTagHeadClose);
+    }
+  }
+
   if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v7")) {
     const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v7">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
     const mobileHeadClose = html.toLowerCase().lastIndexOf("</head>");
