@@ -267,6 +267,25 @@ function enhanceHtml(html, asset, requestUrl) {
     }
   }
 
+  // Conversão do Google Ads: contar apenas o carregamento da página inicial.
+  // Não dispara na página de revendedores nem em outros HTMLs.
+  if (asset === "index.html" && !html.includes("WkVSCKKsvqMdELTR_b5E")) {
+    const conversionEventSnippet = [
+      '<!-- Event snippet for Visualização de página (1) conversion page -->',
+      '<script>',
+      "  gtag('event', 'conversion', {",
+      "      'send_to': 'AW-18385692852/WkVSCKKsvqMdELTR_b5E',",
+      "      'value': 1.0,",
+      "      'currency': 'BRL'",
+      '  });',
+      '</script>'
+    ].join(NL);
+    const conversionHeadClose = html.toLowerCase().lastIndexOf("</head>");
+    if (conversionHeadClose >= 0) {
+      html = html.slice(0, conversionHeadClose) + conversionEventSnippet + NL + html.slice(conversionHeadClose);
+    }
+  }
+
   if (asset === "index.html" && !html.includes("wrbtv-mobile-premium-v7")) {
     const mobileStyleBlock = '<style id="wrbtv-mobile-premium-v7">' + NL + MOBILE_PREMIUM_CSS + NL + '</style>';
     const mobileHeadClose = html.toLowerCase().lastIndexOf("</head>");
