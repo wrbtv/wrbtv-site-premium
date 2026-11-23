@@ -194,6 +194,7 @@ function resolveAsset(pathname) {
       return null;
     }
     if (name === "wrbtv-share.png") return "home-reference.png";
+    if (name === "wrbtv-logo-christmas.webp") return name;
     return ALLOWED_FILES.has(name) && (name.endsWith(".png") || name.endsWith(".jpg")) ? name : null;
   }
 
@@ -202,6 +203,28 @@ function resolveAsset(pathname) {
 
 function enhanceHtml(html, asset, requestUrl) {
   const isReseller = asset === "revendedor.html";
+
+  // Atualiza somente a primeira imagem identificada como logo oficial no cabeçalho.
+  // As imagens dos cards dos aplicativos permanecem intactas.
+  if (asset === "index.html" && !html.includes("wrbtv-header-logo-christmas-v1")) {
+    let headerLogoReplaced = false;
+    html = html.replace(/<img\\b[^>]*>/gi, function (tag) {
+      if (headerLogoReplaced) return tag;
+      const altMatch = tag.match(/\\balt\\s*=\\s*(["'])(.*?)\\1/i);
+      if (!altMatch || !/logo oficial\\s+wrb-tv/i.test(altMatch[2])) return tag;
+      headerLogoReplaced = true;
+      let updatedTag = tag.replace(/\\s+(?:srcset|data-srcset|data-src|data-lazy-src)\\s*=\\s*(["']).*?\\1/gi, "");
+      if (/\\bsrc\\s*=\\s*(["']).*?\\1/i.test(updatedTag)) {
+        updatedTag = updatedTag.replace(/\\bsrc\\s*=\\s*(["']).*?\\1/i, 'src="/assets/wrbtv-logo-christmas.webp?v=20261123"');
+      } else {
+        updatedTag = updatedTag.replace(/<img\\b/i, '<img src="/assets/wrbtv-logo-christmas.webp?v=20261123"');
+      }
+      return updatedTag;
+    });
+    if (headerLogoReplaced) {
+      html = html.replace(/<img\\b/i, '<!-- wrbtv-header-logo-christmas-v1 -->\\n<img');
+    }
+  }
   const canonical = isReseller
     ? "https://wrbtv.com.br/revendedor.html"
     : "https://wrbtv.com.br/";
@@ -363,7 +386,7 @@ export default {
     }
 
     try {
-      if (asset === "wrbtv-logo.png" || asset === "wrbtv-logo-official.png") {
+      if (asset === "wrbtv-logo-christmas.webp") {
         const binaryLogo = atob(WRBTV_CHRISTMAS_LOGO_WEBP_B64);
         const logoBytes = Uint8Array.from(binaryLogo, (character) => character.charCodeAt(0));
         return new Response(request.method === "HEAD" ? null : logoBytes, {
@@ -372,7 +395,7 @@ export default {
             "Content-Type": "image/webp",
             "X-Content-Type-Options": "nosniff",
             "Referrer-Policy": "strict-origin-when-cross-origin",
-            "Cache-Control": "no-store, no-cache, must-revalidate"
+            "Cache-Control": "public, max-age=31536000, immutable"
           }
         });
       }
