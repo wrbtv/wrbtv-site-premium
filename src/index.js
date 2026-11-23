@@ -204,14 +204,12 @@ function resolveAsset(pathname) {
 function enhanceHtml(html, asset, requestUrl) {
   const isReseller = asset === "revendedor.html";
 
-  // Atualiza somente a primeira imagem identificada como logo oficial no cabeçalho.
-  // As imagens dos cards dos aplicativos permanecem intactas.
-  if (asset === "index.html" && !html.includes("wrbtv-header-logo-christmas-v1")) {
+  // Atualiza apenas a primeira tag IMG que aponta para o asset do logo WRB-TV.
+  // O HTML reutiliza o mesmo logo em outras áreas; as imagens seguintes ficam intactas.
+  if (asset === "index.html" && !html.includes("wrbtv-header-logo-christmas-v2")) {
     let headerLogoReplaced = false;
     html = html.replace(/<img\b[^>]*>/gi, function (tag) {
-      if (headerLogoReplaced) return tag;
-      const altMatch = tag.match(/\balt\s*=\s*(["'])(.*?)\1/i);
-      if (!altMatch || !/logo oficial\s+wrb-tv/i.test(altMatch[2])) return tag;
+      if (headerLogoReplaced || !/wrbtv-logo(?:-official)?\.png(?:[?#"'\\s]|$)/i.test(tag)) return tag;
       headerLogoReplaced = true;
       let updatedTag = tag.replace(/\s+(?:srcset|data-srcset|data-src|data-lazy-src)\s*=\s*(["']).*?\1/gi, "");
       if (/\bsrc\s*=\s*(["']).*?\1/i.test(updatedTag)) {
@@ -222,7 +220,7 @@ function enhanceHtml(html, asset, requestUrl) {
       return updatedTag;
     });
     if (headerLogoReplaced) {
-      html = html.replace(/<img\b/i, '<!-- wrbtv-header-logo-christmas-v1 -->\n<img');
+      html = html.replace(/<img\b/i, '<!-- wrbtv-header-logo-christmas-v2 -->\n<img');
     }
   }
   const canonical = isReseller
