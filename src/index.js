@@ -216,7 +216,7 @@ function enhanceHtml(html, asset, requestUrl) {
       let updatedTag = tag.replace(/\s+(?:srcset|data-srcset|data-src|data-lazy-src|width|height)\s*=\s*(["']).*?\1/gi, "");
       updatedTag = updatedTag.replace(/\s+style\s*=\s*(["']).*?\1/gi, "");
       if (/\bsrc\s*=\s*(["']).*?\1/i.test(updatedTag)) {
-        updatedTag = updatedTag.replace(/\bsrc\s*=\s*(["']).*?\1/i, 'src="/assets/wrbtv-logo-christmas.webp?v=20261123-final"');
+        updatedTag = updatedTag.replace(/\bsrc\s*=\s*(["']).*?\1/i, 'src="/assets/wrbtv-logo-christmas.webp?v=20261123-hq110"');
       } else {
         updatedTag = updatedTag.replace(/<img\b/i, '<img src="/assets/wrbtv-logo-christmas.webp?v=20261123"');
       }
