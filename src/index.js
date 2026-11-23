@@ -208,21 +208,21 @@ function enhanceHtml(html, asset, requestUrl) {
   // As imagens dos cards dos aplicativos permanecem intactas.
   if (asset === "index.html" && !html.includes("wrbtv-header-logo-christmas-v1")) {
     let headerLogoReplaced = false;
-    html = html.replace(/<img\\b[^>]*>/gi, function (tag) {
+    html = html.replace(/<img\b[^>]*>/gi, function (tag) {
       if (headerLogoReplaced) return tag;
-      const altMatch = tag.match(/\\balt\\s*=\\s*(["'])(.*?)\\1/i);
-      if (!altMatch || !/logo oficial\\s+wrb-tv/i.test(altMatch[2])) return tag;
+      const altMatch = tag.match(/\balt\s*=\s*(["'])(.*?)\1/i);
+      if (!altMatch || !/logo oficial\s+wrb-tv/i.test(altMatch[2])) return tag;
       headerLogoReplaced = true;
-      let updatedTag = tag.replace(/\\s+(?:srcset|data-srcset|data-src|data-lazy-src)\\s*=\\s*(["']).*?\\1/gi, "");
-      if (/\\bsrc\\s*=\\s*(["']).*?\\1/i.test(updatedTag)) {
-        updatedTag = updatedTag.replace(/\\bsrc\\s*=\\s*(["']).*?\\1/i, 'src="/assets/wrbtv-logo-christmas.webp?v=20261123"');
+      let updatedTag = tag.replace(/\s+(?:srcset|data-srcset|data-src|data-lazy-src)\s*=\s*(["']).*?\1/gi, "");
+      if (/\bsrc\s*=\s*(["']).*?\1/i.test(updatedTag)) {
+        updatedTag = updatedTag.replace(/\bsrc\s*=\s*(["']).*?\1/i, 'src="/assets/wrbtv-logo-christmas.webp?v=20261123"');
       } else {
-        updatedTag = updatedTag.replace(/<img\\b/i, '<img src="/assets/wrbtv-logo-christmas.webp?v=20261123"');
+        updatedTag = updatedTag.replace(/<img\b/i, '<img src="/assets/wrbtv-logo-christmas.webp?v=20261123"');
       }
       return updatedTag;
     });
     if (headerLogoReplaced) {
-      html = html.replace(/<img\\b/i, '<!-- wrbtv-header-logo-christmas-v1 -->\\n<img');
+      html = html.replace(/<img\b/i, '<!-- wrbtv-header-logo-christmas-v1 -->\n<img');
     }
   }
   const canonical = isReseller
