@@ -350,6 +350,53 @@ function enhanceHtml(html, asset, requestUrl) {
       html = html.slice(0, testServerBodyClose) + testServerScriptBlock + NL + html.slice(testServerBodyClose);
     }
   }
+  if (asset === "index.html" && !html.includes("wrbtv-desktop-christmas-logo-overlay-v1")) {
+    const desktopChristmasOverlay = [
+      '<script id="wrbtv-desktop-christmas-logo-overlay-v1">',
+      '(function(){',
+      '  function placeChristmasLogo(){',
+      '    var hero = document.querySelector(".hero");',
+      '    var heroImage = hero && hero.querySelector(".hero-img");',
+      '    if (!hero || !heroImage || window.matchMedia("(max-width: 1020px)").matches) return;',
+      '    var imageRect = heroImage.getBoundingClientRect();',
+      '    var heroRect = hero.getBoundingClientRect();',
+      '    if (imageRect.width < 10 || imageRect.height < 10) return;',
+      '    hero.style.position = "relative";',
+      '    var overlay = hero.querySelector(".wrbtv-desktop-christmas-logo-overlay");',
+      '    if (!overlay) {',
+      '      overlay = document.createElement("div");',
+      '      overlay.className = "wrbtv-desktop-christmas-logo-overlay";',
+      '      overlay.setAttribute("aria-hidden", "true");',
+      '      overlay.style.cssText = "position:absolute;pointer-events:none;z-index:9999;overflow:hidden;";',
+      '      var mask = document.createElement("div");',
+      '      mask.style.cssText = "position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at 50% 48%,rgba(1,7,18,.99) 0%,rgba(1,7,18,.98) 64%,rgba(1,7,18,.82) 82%,rgba(1,7,18,0) 100%);";',
+      '      var logo = document.createElement("img");',
+      '      logo.src = "/assets/wrbtv-logo-christmas.webp?v=20261123-desktop-banner-v1";',
+      '      logo.alt = "";',
+      '      logo.draggable = false;',
+      '      logo.style.cssText = "position:absolute;left:4%;top:0;width:92%;height:100%;object-fit:contain;object-position:center;";',
+      '      overlay.appendChild(mask);',
+      '      overlay.appendChild(logo);',
+      '      hero.appendChild(overlay);',
+      '    }',
+      '    overlay.style.left = (imageRect.left - heroRect.left + imageRect.width * 0.042) + "px";',
+      '    overlay.style.top = (imageRect.top - heroRect.top + imageRect.height * 0.004) + "px";',
+      '    overlay.style.width = (imageRect.width * 0.125) + "px";',
+      '    overlay.style.height = (imageRect.height * 0.15) + "px";',
+      '  }',
+      '  function schedulePlacement(){ window.requestAnimationFrame(placeChristmasLogo); }',
+      '  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", schedulePlacement, {once:true});',
+      '  else schedulePlacement();',
+      '  window.addEventListener("load", schedulePlacement, {once:true});',
+      '  window.addEventListener("resize", schedulePlacement, {passive:true});',
+      '})();',
+      '</script>'
+    ].join(NL);
+    const overlayBodyClose = html.toLowerCase().lastIndexOf("</body>");
+    if (overlayBodyClose >= 0) {
+      html = html.slice(0, overlayBodyClose) + desktopChristmasOverlay + NL + html.slice(overlayBodyClose);
+    }
+  }
   return html;
 }
 
